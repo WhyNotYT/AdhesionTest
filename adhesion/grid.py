@@ -46,7 +46,15 @@ def _finish(
         index = int(cell["cell_id"])
         cell["row"] = index // cols + 1
         cell["column"] = index % cols + 1
-    info = {"method": method, "rows": rows, "cols": cols, "cells": cells, "frame": frame}
+    info = {
+        "method": method,
+        "rows": rows,
+        "cols": cols,
+        "cells": cells,
+        "frame": frame,
+        "width": int(labels.shape[1]),
+        "height": int(labels.shape[0]),
+    }
     if extra:
         info.update(extra)
     return {
@@ -382,14 +390,66 @@ def detect_grid(image: np.ndarray, rows: int, cols: int, params: dict | None = N
     )
 
 
+def _clean_lines(values, expected: int, limit: int) -> np.ndarray | None:
+    """Validate a user-edited set of straight grid lines."""
+    try:
+        array = np.asarray(values, dtype=float).ravel()
+    except (TypeError, ValueError):
+        return None
+    if array.size != expected or not np.all(np.isfinite(array)):
+        return None
+    array = np.sort(array)
+    if array[0] < 0 or array[-1] > max(0, limit - 1):
+        return None
+    if np.any(np.diff(array) < 2.0):
+        return None
+    return array
+
+
+def manual_grid(
+    params: dict,
+    shape: tuple[int, int],
+    rows: int,
+    cols: int,
+    frame: str,
+) -> dict | None:
+    """Build cells from straight lines dragged by the user."""
+    height, width = shape
+    xs = _clean_lines(params.get("lines_x") or [], cols + 1, width)
+    ys = _clean_lines(params.get("lines_y") or [], rows + 1, height)
+    if xs is None or ys is None:
+        return None
+    labels, boundary = _straight_labels(xs, ys, rows, cols, shape)
+    return _finish(
+        labels,
+        ndi.binary_dilation(boundary, iterations=1),
+        rows,
+        cols,
+        "manual grid",
+        {"lines_x": xs.tolist(), "lines_y": ys.tolist()},
+        frame=frame,
+    )
+
+
 def make_grid(
     image: np.ndarray,
     spec: dict | None,
     params: dict,
     taped_shape: tuple[int, int] | None = None,
+    manual_frame: str = "reference",
 ) -> dict:
     rows = int(params.get("rows", 9))
     cols = int(params.get("cols", 9))
+    if params.get("lines_x") or params.get("lines_y"):
+        edited = manual_grid(
+            params,
+            taped_shape or image.shape,
+            rows,
+            cols,
+            manual_frame,
+        )
+        if edited is not None:
+            return edited
     if taped_shape is not None:
         ahmed = load_ahmed_grid(spec, taped_shape, rows, cols)
         if ahmed is not None:

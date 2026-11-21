@@ -1,0 +1,65 @@
+[
+  {
+    "step": "align",
+    "key": "reference",
+    "label": "Squared",
+    "url": "/media/debug-pair-auto/stage-ded186fc9cf2dc709ebc/reference.png",
+    "main": false
+  },
+  {
+    "step": "align",
+    "key": "tape",
+    "label": "Taped",
+    "url": "/media/debug-pair-auto/stage-ded186fc9cf2dc709ebc/tape.png",
+    "main": false
+  },
+  {
+    "step": "align",
+    "key": "align",
+    "label": "Overlay",
+    "url": "/media/debug-pair-auto/stage-ded186fc9cf2dc709ebc/align.png",
+    "main": true
+  },
+  {
+    "step": "grid",
+    "key": "grid",
+    "label": "Grid",
+    "url": "/media/debug-pair-auto/stage-ded186fc9cf2dc709ebc/grid.png",
+    "main": true
+  },
+  {
+    "step": "grid",
+    "key": "excluded",
+    "label": "Excluded",
+    "url": "/media/debug-pair-auto/stage-ded186fc9cf2dc709ebc/excluded.png",
+    "main": false
+  },
+  {
+    "step": "signals",
+    "key": "normalized",
+    "label": "Reference",
+    "url": "/media/debug-pair-auto/stage-ded186fc9cf2dc709ebc/normalized.png",
+    "main": false
+  },
+  {
+    "step": "signals",
+    "key": "field",
+    "label": "Illumination",
+    "url": "/media/debug-pair-auto/stage-ded186fc9cf2dc709ebc/field.png",
+    "main": false
+  },
+  {
+    "step": "signals",
+    "key": "delta",
+    "label": "Delta",
+    "url": "/media/debug-pair-auto/stage-ded186fc9cf2dc709ebc/delta.png",
+    "main": true
+  },
+  {
+    "step": "signals",
+    "key": "brightness",
+    "label": "Brightness",
+    "url": "/media/debug-pair-auto/stage-ded186fc9cf2dc709ebc/brightness.png",
+    "main": false
+  }
+]

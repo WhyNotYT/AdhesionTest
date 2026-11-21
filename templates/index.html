@@ -89,6 +89,7 @@
         <section class="viewer-panel">
           <div class="viewer" id="viewer">
             <img id="mainImage" alt="Analysis visualization">
+            <canvas id="gridOverlay" class="grid-overlay" hidden aria-label="Drag grid lines to adjust the cell layout"></canvas>
             <div id="loading" class="loading" hidden>
               <span class="spinner"></span>
               <span>Working</span>
@@ -104,6 +105,7 @@
         <aside class="controls-panel">
           <div class="controls-head">
             <h2 id="controlsTitle">Align</h2>
+            <button id="applyGridButton" class="text-button" hidden>Apply grid</button>
             <button id="resetButton" class="text-button">Reset</button>
           </div>
           <div id="controls" class="controls"></div>

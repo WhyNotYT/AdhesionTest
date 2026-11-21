@@ -1,6 +1,6 @@
 {
   "seed": 1337,
-  "version": "1.1.0",
+  "version": "1.2.0",
   "method": "S13 paired-image pipeline: affine registration, cut/exclusion masks, robust log-intensity field, sigma-derived thresholds, 8-connected components. Default sensitivity is the validated S13 V2 5.0x setting. Published Ahmed ThorCam pairs use their supplied cell grids and analysis-domain masks with per-sample detector presets.",
   "input_note": "The original S13/S16 raw TIFFs are not present in the supplied folders. S13 validation therefore uses inputs reconstructed from the delivered 8-bit Green_Boundaries PNGs. Ahmed validation reads the supplied raw 16-bit TIFFs next to this project; exact raw uploads use their supplied grid and run the same code path.",
   "criteria": {

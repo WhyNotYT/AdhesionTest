@@ -359,6 +359,27 @@ body {
   image-rendering: auto;
 }
 
+.grid-overlay {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  touch-action: none;
+}
+
+.viewer.is-grid-editable .grid-overlay {
+  pointer-events: auto;
+  cursor: crosshair;
+}
+
+.viewer.is-grid-editable .grid-overlay.is-dragging {
+  cursor: grabbing;
+}
+
+.zoom,
+.viewer-badge {
+  z-index: 3;
+}
+
 .viewer-badge {
   position: absolute;
   left: 13px;
@@ -479,6 +500,8 @@ body {
   cursor: pointer;
 }
 .text-button:hover { color: var(--ink); }
+#applyGridButton { color: var(--blue); }
+#applyGridButton:hover { color: var(--ink); }
 
 .controls { display: flex; flex-direction: column; gap: 2px; }
 
@@ -560,6 +583,7 @@ body {
   white-space: pre-line;
 }
 .derived b { color: var(--ink); font-weight: 600; }
+.derived .hint { color: var(--blue); }
 
 /* ----------------------------------------------------------------- bottom */
 .bottom {

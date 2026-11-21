@@ -1,6 +1,6 @@
 {
-  "run_key": "c24799edf56579733fea",
-  "stage_key": "92b21d9a8bb6e8b47112",
+  "run_key": "28562e1f4d91143b1191",
+  "stage_key": "77146f5e36d6bce171f2",
   "mode": "paired",
   "defaults": {
     "registration": {
@@ -17,7 +17,9 @@
       "rows": 9,
       "cols": 9,
       "line_prominence": 0.003,
-      "curve_sigma": 8.0
+      "curve_sigma": 8.0,
+      "lines_x": [],
+      "lines_y": []
     },
     "exclusion": {
       "near_px": 6.0,
@@ -91,7 +93,9 @@
       "rows": 9,
       "cols": 9,
       "line_prominence": 0.003,
-      "curve_sigma": 8.0
+      "curve_sigma": 8.0,
+      "lines_x": [],
+      "lines_y": []
     },
     "exclusion": {
       "near_px": 6.0,
@@ -123,13 +127,13 @@
     "label": "S16 demo",
     "reference": {
       "name": "S16_demo_Squared_[1].tif",
-      "path": "/run/media/whynotyt/8743e3e3-e8d0-4b37-8f07-149513154275/OtherWork/Juhani/data/demo/S16_demo_Squared_[1].tif",
+      "path": "/run/media/whynotyt/8743e3e3-e8d0-4b37-8f07-149513154275/OtherWork/AdhesionTest/data/demo/S16_demo_Squared_[1].tif",
       "sha256": "9422b07189c7c516e729937efd1dc136ba3f42db53f6290763bd4746afb0ccc9",
       "demo": true
     },
     "taped": {
       "name": "S16_demo_Taped_[1].tif",
-      "path": "/run/media/whynotyt/8743e3e3-e8d0-4b37-8f07-149513154275/OtherWork/Juhani/data/demo/S16_demo_Taped_[1].tif",
+      "path": "/run/media/whynotyt/8743e3e3-e8d0-4b37-8f07-149513154275/OtherWork/AdhesionTest/data/demo/S16_demo_Taped_[1].tif",
       "sha256": "2e3f0fb5d04280d1c9d25c2e07dd36efecd6c7f0896a3817d76440b88896f01f",
       "demo": true
     },
@@ -149,6 +153,7 @@
       "baseline_peeled_pct": null,
       "strict_peeled_pct": 9.284950067343752
     },
+    "mode": "paired",
     "order": 102
   },
   "expected": {
@@ -1380,6 +1385,6 @@
     }
   ],
   "seed": 1337,
-  "version": "1.1.0",
-  "thumb": "/media/demo-s16/loss-c24799edf56579733fea/overlay_thumb.png"
+  "version": "1.2.0",
+  "thumb": "/media/demo-s16/loss-28562e1f4d91143b1191/overlay_thumb.png"
 }

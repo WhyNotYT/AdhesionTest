@@ -1,0 +1,30 @@
+[
+  {
+    "step": "align",
+    "key": "image",
+    "label": "Squared",
+    "url": "/media/3f94e1f976b28778d9b9/stage-367b253f8c1ada93c727/image.png",
+    "main": true
+  },
+  {
+    "step": "grid",
+    "key": "grid",
+    "label": "Grid",
+    "url": "/media/3f94e1f976b28778d9b9/stage-367b253f8c1ada93c727/grid.png",
+    "main": true
+  },
+  {
+    "step": "grid",
+    "key": "excluded",
+    "label": "Excluded",
+    "url": "/media/3f94e1f976b28778d9b9/stage-367b253f8c1ada93c727/excluded.png",
+    "main": false
+  },
+  {
+    "step": "signals",
+    "key": "brightness",
+    "label": "Brightness",
+    "url": "/media/3f94e1f976b28778d9b9/stage-367b253f8c1ada93c727/brightness.png",
+    "main": false
+  }
+]

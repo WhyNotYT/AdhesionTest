@@ -15,6 +15,8 @@
     pairParams: {},
     histMode: "delta",
     dragging: false,
+    gridLines: null,
+    gridDirty: false,
   };
 
   const $ = (id) => document.getElementById(id);
@@ -35,7 +37,10 @@
     eligible: $("eligibleValue"),
     eligibleLabel: $("eligibleLabel"),
     tabs: Array.from(document.querySelectorAll(".tab")),
+    viewer: $("viewer"),
     mainImage: $("mainImage"),
+    gridOverlay: $("gridOverlay"),
+    applyGrid: $("applyGridButton"),
     viewerBadge: $("viewerBadge"),
     loading: $("loading"),
     viewStrip: $("viewStrip"),
@@ -273,6 +278,242 @@
     for (const thumb of els.viewStrip.querySelectorAll(".view-thumb")) {
       thumb.classList.toggle("is-active", thumb.dataset.key === view.key);
     }
+    renderGridOverlay();
+  }
+
+  // --------------------------------------------------------------- grid editor
+  function imageContentRect() {
+    const rect = els.mainImage.getBoundingClientRect();
+    const naturalWidth = els.mainImage.naturalWidth || rect.width || 1;
+    const naturalHeight = els.mainImage.naturalHeight || rect.height || 1;
+    const scale = Math.min(rect.width / naturalWidth, rect.height / naturalHeight);
+    const width = naturalWidth * scale;
+    const height = naturalHeight * scale;
+    return {
+      left: rect.left + (rect.width - width) / 2,
+      top: rect.top + (rect.height - height) / 2,
+      width,
+      height,
+      naturalWidth,
+      naturalHeight,
+    };
+  }
+
+  function gridGeometry() {
+    const lines = state.gridLines;
+    if (!lines) return null;
+    const content = imageContentRect();
+    if (content.width < 8 || content.height < 8) return null;
+    const viewerRect = els.viewer.getBoundingClientRect();
+    return {
+      lines,
+      content,
+      left: content.left - viewerRect.left,
+      top: content.top - viewerRect.top,
+      sx: content.width / lines.width,
+      sy: content.height / lines.height,
+    };
+  }
+
+  function renderGridOverlay() {
+    const lines = state.gridLines;
+    const editable = Boolean(
+      lines &&
+      lines.x.length > 1 &&
+      lines.y.length > 1 &&
+      state.tab === "grid" &&
+      state.activeView === "grid"
+    );
+    els.viewer.classList.toggle("is-grid-editable", editable);
+    els.applyGrid.hidden = !(editable && state.gridDirty);
+    els.gridOverlay.hidden = !editable;
+    if (!editable) return;
+
+    const geometry = gridGeometry();
+    if (!geometry) {
+      els.gridOverlay.hidden = true;
+      return;
+    }
+    const dpr = window.devicePixelRatio || 1;
+    const width = Math.max(1, geometry.content.width);
+    const height = Math.max(1, geometry.content.height);
+    els.gridOverlay.style.left = `${geometry.left}px`;
+    els.gridOverlay.style.top = `${geometry.top}px`;
+    els.gridOverlay.style.width = `${width}px`;
+    els.gridOverlay.style.height = `${height}px`;
+    els.gridOverlay.width = Math.round(width * dpr);
+    els.gridOverlay.height = Math.round(height * dpr);
+
+    const ctx = els.gridOverlay.getContext("2d");
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, width, height);
+
+    const xs = lines.x.map((value) => value * geometry.sx);
+    const ys = lines.y.map((value) => value * geometry.sy);
+    const top = ys[0];
+    const bottom = ys[ys.length - 1];
+    const left = xs[0];
+    const right = xs[xs.length - 1];
+
+    ctx.lineWidth = 1.6;
+    ctx.strokeStyle = "rgba(54, 226, 255, 0.95)";
+    ctx.shadowColor = "rgba(0, 0, 0, 0.6)";
+    ctx.shadowBlur = 2;
+    for (const x of xs) {
+      ctx.beginPath();
+      ctx.moveTo(x, top);
+      ctx.lineTo(x, bottom);
+      ctx.stroke();
+    }
+    for (const y of ys) {
+      ctx.beginPath();
+      ctx.moveTo(left, y);
+      ctx.lineTo(right, y);
+      ctx.stroke();
+    }
+    ctx.shadowBlur = 0;
+
+    ctx.fillStyle = "rgba(12, 20, 24, 0.72)";
+    ctx.strokeStyle = "rgba(54, 226, 255, 1)";
+    ctx.lineWidth = 1.2;
+    for (const x of xs) {
+      for (const y of [top, bottom]) {
+        ctx.beginPath();
+        ctx.arc(x, y, 3.4, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+      }
+    }
+    for (const y of ys) {
+      for (const x of [left, right]) {
+        ctx.beginPath();
+        ctx.arc(x, y, 3.4, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+      }
+    }
+  }
+
+  function gridPointer(event) {
+    const lines = state.gridLines;
+    const content = imageContentRect();
+    return {
+      x: ((event.clientX - content.left) / Math.max(content.width, 1)) * lines.width,
+      y: ((event.clientY - content.top) / Math.max(content.height, 1)) * lines.height,
+      scaleX: lines.width / Math.max(content.width, 1),
+      scaleY: lines.height / Math.max(content.height, 1),
+    };
+  }
+
+  function gridLineAt(event) {
+    const lines = state.gridLines;
+    if (!lines) return null;
+    const point = gridPointer(event);
+    const toleranceX = 11 * point.scaleX;
+    const toleranceY = 11 * point.scaleY;
+    const withinRows = point.y >= lines.y[0] - toleranceY && point.y <= lines.y[lines.y.length - 1] + toleranceY;
+    const withinColumns = point.x >= lines.x[0] - toleranceX && point.x <= lines.x[lines.x.length - 1] + toleranceX;
+    let best = null;
+    if (withinRows) {
+      for (let index = 0; index < lines.x.length; index += 1) {
+        const distance = Math.abs(point.x - lines.x[index]);
+        if (distance <= toleranceX && (!best || distance < best.distance)) {
+          best = { axis: "x", index, distance };
+        }
+      }
+    }
+    if (withinColumns) {
+      for (let index = 0; index < lines.y.length; index += 1) {
+        const distance = Math.abs(point.y - lines.y[index]);
+        if (distance <= toleranceY && (!best || distance < best.distance)) {
+          best = { axis: "y", index, distance };
+        }
+      }
+    }
+    return best;
+  }
+
+  let gridDrag = null;
+
+  function beginGridDrag(event) {
+    if (event.button !== 0 || !state.gridLines) return;
+    if (els.loading && !els.loading.hidden) return;
+    const hit = gridLineAt(event);
+    if (!hit) return;
+    gridDrag = { ...hit, moved: false };
+    try {
+      els.gridOverlay.setPointerCapture(event.pointerId);
+    } catch (error) {
+      // Synthetic or older pointer events may not support capture.
+    }
+    els.gridOverlay.classList.add("is-dragging");
+    event.preventDefault();
+  }
+
+  function moveGridDrag(event) {
+    if (!gridDrag) return;
+    const lines = state.gridLines;
+    const point = gridPointer(event);
+    const axis = gridDrag.axis;
+    const values = axis === "x" ? lines.x : lines.y;
+    const limit = axis === "x" ? lines.width : lines.height;
+    const minimumGap = Math.max(3, limit * 0.003);
+    const lower = gridDrag.index > 0 ? values[gridDrag.index - 1] + minimumGap : 0;
+    const upper = gridDrag.index < values.length - 1 ? values[gridDrag.index + 1] - minimumGap : limit - 1;
+    const next = Math.min(upper, Math.max(lower, axis === "x" ? point.x : point.y));
+    if (Math.abs(next - values[gridDrag.index]) > 0.01) {
+      gridDrag.moved = true;
+      state.gridDirty = true;
+    }
+    values[gridDrag.index] = next;
+    renderGridOverlay();
+    event.preventDefault();
+  }
+
+  function endGridDrag(event) {
+    if (!gridDrag) return;
+    const moved = gridDrag.moved;
+    gridDrag = null;
+    els.gridOverlay.classList.remove("is-dragging");
+    try {
+      if (els.gridOverlay.hasPointerCapture(event.pointerId)) {
+        els.gridOverlay.releasePointerCapture(event.pointerId);
+      }
+    } catch (error) {
+      // Ignore capture cleanup failures on synthetic pointer events.
+    }
+    if (moved) {
+      renderGridOverlay();
+      renderDerived();
+    }
+  }
+
+  function commitGridLines() {
+    const lines = state.gridLines;
+    if (!lines) return;
+    if (!state.params.grid) state.params.grid = {};
+    state.params.grid.lines_x = lines.x.slice();
+    state.params.grid.lines_y = lines.y.slice();
+    if (state.analysis?.state?.grid) {
+      state.params.grid.rows = Number(state.analysis.state.grid.rows || state.params.grid.rows);
+      state.params.grid.cols = Number(state.analysis.state.grid.cols || state.params.grid.cols);
+    }
+    state.gridDirty = false;
+    els.applyGrid.hidden = true;
+    if (state.activeId) state.pairParams[state.activeId] = structuredClone(state.params);
+    clearTimeout(analyzeTimer);
+    analyze();
+  }
+
+  function clearGridLines() {
+    state.gridLines = null;
+    state.gridDirty = false;
+    els.applyGrid.hidden = true;
+    if (state.params.grid) {
+      state.params.grid.lines_x = [];
+      state.params.grid.lines_y = [];
+    }
+    renderGridOverlay();
   }
 
   function renderControls() {
@@ -314,6 +555,14 @@
           const next = Number(input.value);
           output.textContent = formatValue(next, step);
           setParam(definition.param, next);
+          if (definition.param === "grid.rows" || definition.param === "grid.cols") {
+            if (state.params.grid) {
+              state.params.grid.lines_x = [];
+              state.params.grid.lines_y = [];
+            }
+            state.gridLines = null;
+            renderGridOverlay();
+          }
           const group = definition.param.split(".")[0];
           const delay = group === "detection" ? 220 : 540;
           scheduleAnalysis(delay);
@@ -339,10 +588,14 @@
         `matches <b>${reg.matches ?? "–"}</b>   inliers <b>${reg.inliers ?? "–"}</b>\n` +
         `error <b>${fmt(reg.median_error_px, 2)} px</b>   ncc <b>${fmt(reg.median_ncc, 3)}</b>`;
     } else if (state.tab === "grid") {
+      const hint = grid.editable
+        ? `\n<span class="hint">${state.gridDirty ? "Lines moved — press Apply grid." : "Drag the cyan lines to correct the grid."}</span>`
+        : "";
       els.derived.innerHTML =
         `cells <b>${grid.cells?.length ?? "–"}</b>   method <b>${grid.method || "–"}</b>\n` +
         `eligible <b>${(stats.eligible_pixels || 0).toLocaleString("en-US")}</b> px\n` +
-        `excluded <b>${((stats.scrape_pixels || 0) + (stats.oldfoil_pixels || 0)).toLocaleString("en-US")}</b> px`;
+        `excluded <b>${((stats.scrape_pixels || 0) + (stats.oldfoil_pixels || 0)).toLocaleString("en-US")}</b> px` +
+        hint;
     } else if (state.tab === "signals") {
       const estimated = (analysis.mode || "paired") !== "paired";
       els.derived.innerHTML = estimated
@@ -498,6 +751,26 @@
     if (estimated && state.tab === "align") state.tab = "grid";
     updateTabButtons();
     if (data.params) state.params = structuredClone(data.params);
+    const grid = data.state?.grid || {};
+    if (
+      Array.isArray(grid.display_lines_x) &&
+      grid.display_lines_x.length > 1 &&
+      Array.isArray(grid.display_lines_y) &&
+      grid.display_lines_y.length > 1
+    ) {
+      state.gridLines = {
+        x: grid.display_lines_x.slice(),
+        y: grid.display_lines_y.slice(),
+        width: Number(grid.display_width || grid.width || 1),
+        height: Number(grid.display_height || grid.height || 1),
+        rows: Number(grid.rows || 9),
+        cols: Number(grid.cols || 9),
+      };
+    } else {
+      state.gridLines = null;
+    }
+    state.gridDirty = false;
+    gridDrag = null;
     if (state.activeId) {
       state.pairParams[state.activeId] = structuredClone(state.params);
       const pair = state.pairs.find((item) => item.id === state.activeId);
@@ -520,6 +793,7 @@
     renderControls();
     drawHistogram();
     renderCells();
+    renderGridOverlay();
   }
 
   async function analyze({ force = false } = {}) {
@@ -564,6 +838,10 @@
     state.activeDefaults = structuredClone(pair.defaults || state.defaults);
     state.params = structuredClone(state.pairParams[id] || state.activeDefaults);
     state.analysis = null;
+    state.gridLines = null;
+    state.gridDirty = false;
+    gridDrag = null;
+    els.applyGrid.hidden = true;
     els.csvLink.hidden = true;
     showWorkspace(true);
     updateHeader(pair, null);
@@ -612,10 +890,12 @@
     renderViewStrip();
     drawHistogram();
     renderDerived();
+    renderGridOverlay();
   }
 
   function resetTab() {
     const defaults = state.activeDefaults || state.defaults;
+    if (state.tab === "grid") clearGridLines();
     for (const definition of CONTROL_GROUPS[state.tab] || []) {
       const [group, key] = definition.param.split(".");
       if (defaults[group] && key in defaults[group]) setParam(definition.param, defaults[group][key]);
@@ -627,8 +907,12 @@
   // ------------------------------------------------------------------ events
   els.fileInput.addEventListener("change", (event) => uploadFiles(event.target.files));
   els.emptyInput.addEventListener("change", (event) => uploadFiles(event.target.files));
-  $("resetButton").title = "Restore defaults for this step";
+  $("resetButton").title = "Restore defaults and re-detect the grid";
   $("resetButton").addEventListener("click", resetTab);
+  els.applyGrid.title = "Apply the dragged grid lines";
+  els.applyGrid.addEventListener("click", () => {
+    if (state.gridDirty) commitGridLines();
+  });
 
   for (const button of els.tabs) {
     button.addEventListener("click", () => setTab(button.dataset.tab));
@@ -644,7 +928,16 @@
     if (event.target === els.zoomDialog) els.zoomDialog.close();
   });
 
-  window.addEventListener("resize", () => drawHistogram());
+  els.gridOverlay.addEventListener("pointerdown", beginGridDrag);
+  els.gridOverlay.addEventListener("pointermove", moveGridDrag);
+  els.gridOverlay.addEventListener("pointerup", endGridDrag);
+  els.gridOverlay.addEventListener("pointercancel", endGridDrag);
+  els.mainImage.addEventListener("load", renderGridOverlay);
+
+  window.addEventListener("resize", () => {
+    drawHistogram();
+    renderGridOverlay();
+  });
 
   // Drag and drop anywhere on the page.
   for (const eventName of ["dragenter", "dragover"]) {

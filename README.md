@@ -78,6 +78,9 @@ The implementation follows the S13 paired-image pipeline:
 2. **Grid** — supplied Step-1 cell masks for matching reference hashes
    (including the Ahmed ThorCam taped-frame grids and analysis-domain masks),
    otherwise automatic cut-line detection and a row-major 9 x 9 cell grid.
+   On automatically detected grids, the Grid view shows draggable cyan lines.
+   Move any line that is off the real cut, then press **Apply grid**; **Reset**
+   returns to automatic detection.  This works for paired and single images.
 3. **Exclude** — original scrape bands, a registration safety margin,
    pre-existing bright foil candidates, and everything outside the grid.
 4. **Normalise** — 0.6 px smoothing, a robust quadratic fit to paired

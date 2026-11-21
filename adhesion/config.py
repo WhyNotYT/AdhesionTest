@@ -4,7 +4,7 @@ from __future__ import annotations
 from pathlib import Path
 
 SEED = 1337
-PIPELINE_VERSION = "1.1.0"
+PIPELINE_VERSION = "1.2.0"
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
@@ -77,6 +77,10 @@ DEFAULTS = {
         "cols": 9,
         "line_prominence": 0.003,
         "curve_sigma": 8.0,
+        # Optional manual cell boundaries in the frame shown in the Grid view.
+        # The UI fills these when a user drags a detected line.
+        "lines_x": [],
+        "lines_y": [],
     },
     "exclusion": {
         "near_px": 6.0,
@@ -169,15 +173,25 @@ def merge_params(overrides: dict | None = None) -> dict:
             if key not in params[group]:
                 continue
             default = params[group][key]
-            try:
-                if isinstance(default, bool):
-                    value = bool(value)
-                elif isinstance(default, int) and not isinstance(default, bool):
-                    value = int(round(float(value)))
-                else:
-                    value = float(value)
-            except (TypeError, ValueError):
-                continue
+            if isinstance(default, list):
+                if not isinstance(value, (list, tuple)):
+                    continue
+                try:
+                    value = [float(item) for item in value]
+                except (TypeError, ValueError):
+                    continue
+                if len(value) > 16:
+                    continue
+            else:
+                try:
+                    if isinstance(default, bool):
+                        value = bool(value)
+                    elif isinstance(default, int) and not isinstance(default, bool):
+                        value = int(round(float(value)))
+                    else:
+                        value = float(value)
+                except (TypeError, ValueError):
+                    continue
             params[group][key] = value
     params["grid"]["rows"] = max(3, min(15, params["grid"]["rows"]))
     params["grid"]["cols"] = max(3, min(15, params["grid"]["cols"]))

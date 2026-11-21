@@ -213,20 +213,30 @@ class PairAnalysis:
                 ref_meta["resized_to"] = list(reference.shape)
                 # Supplied grid coordinates only apply to their original frame.
                 spec = None
-            grid = grid_module.make_grid(reference, spec, params["grid"], taped.shape)
+            grid = grid_module.make_grid(
+                reference, spec, params["grid"], taped.shape, manual_frame="taped"
+            )
             state = segment.build_state(reference, taped, grid, params)
+            display_shape = taped.shape
         else:
             key = "reference" if self.mode == "reference" else "taped"
             image, image_meta = read_gray(self.pair[key]["path"])
             # A supplied Ahmed grid is defined in the Taped frame.  A
             # Squared-only view uses automatic grid detection instead.
             grid_spec = spec if self.mode == "taped" else None
-            grid = grid_module.make_grid(image, grid_spec, params["grid"], image.shape)
+            grid = grid_module.make_grid(
+                image,
+                grid_spec,
+                params["grid"],
+                image.shape,
+                manual_frame="taped" if self.mode == "taped" else "reference",
+            )
             state = segment.build_single_state(image, grid, params, self.mode)
             grid["info"]["frame"] = "taped" if self.mode == "taped" else "reference"
+            display_shape = image.shape
             ref_meta = image_meta if self.mode == "reference" else {}
             tape_meta = image_meta if self.mode == "taped" else {}
-        state["grid"] = grid["info"]
+        state["grid"] = self._grid_display(grid["info"], state, display_shape)
         state["reference_meta"] = ref_meta
         state["tape_meta"] = tape_meta
         meta = {
@@ -402,6 +412,45 @@ class PairAnalysis:
             if view.get("key") == "status":
                 return view["url"].replace("status.png", "status_thumb.png")
         return detection_views[0]["url"] if detection_views else None
+
+    def _grid_display(self, info: dict, state: dict, display_shape: tuple[int, int]) -> dict:
+        """Add line coordinates in the frame shown by the Grid visualization.
+
+        Single-image grids already live in their display frame.  A paired
+        automatic grid is detected on the Squared image and warped into the
+        Taped frame, so its display lines are mapped through the affine fit.
+        """
+        out = dict(info)
+        xs = [float(value) for value in (info.get("lines_x") or [])]
+        ys = [float(value) for value in (info.get("lines_y") or [])]
+        height, width = display_shape
+        if (
+            self.mode == "paired"
+            and info.get("frame") != "taped"
+            and len(xs) > 1
+            and len(ys) > 1
+        ):
+            matrix = np.asarray(state["matrix"], dtype=float)
+            y_mid = (ys[0] + ys[-1]) / 2.0
+            x_mid = (xs[0] + xs[-1]) / 2.0
+            xs = [
+                matrix[0, 0] * x + matrix[0, 1] * y_mid + matrix[0, 2]
+                for x in xs
+            ]
+            ys = [
+                matrix[1, 0] * x_mid + matrix[1, 1] * y + matrix[1, 2]
+                for y in ys
+            ]
+        if xs:
+            xs = [min(max(value, 0.0), width - 1.0) for value in xs]
+        if ys:
+            ys = [min(max(value, 0.0), height - 1.0) for value in ys]
+        out["display_lines_x"] = xs
+        out["display_lines_y"] = ys
+        out["display_width"] = int(width)
+        out["display_height"] = int(height)
+        out["editable"] = bool(len(xs) > 1 and len(ys) > 1)
+        return out
 
     def _state_summary(self, state: dict) -> dict:
         registration = state.get("registration", {})
