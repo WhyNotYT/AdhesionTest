@@ -1,0 +1,18 @@
+S13 ANALYSIS SOURCE
+
+The image-analysis scripts require NumPy, Pillow and SciPy.
+The workbook builder uses the @oai/artifact-tool package in the Codex runtime.
+
+Set S13_PROJECT_ROOT to the project directory containing:
+  upload/S13_Squared_[1-4].tif and upload/S13_Taped_[1-4].tif
+  S13_Step1/Reusable_Grid_Data (the original Step-1 masks and geometry)
+  work/ (temporary calculations)
+
+Run s13_register.py, s13_segment.py, then s13_deliver.py in that order.
+Run build_s13_xlsx.mjs separately to produce the styled workbook.
+The image quantification does not depend on the workbook builder.
+Threshold settings are specified explicitly in s13_segment.py.
+Do not multiply area-loss percentages to simulate higher sensitivity.
+
+Original source TIFF files are retained separately. Their SHA-256 hashes
+are recorded in Reusable_Data/S13_Analysis_Parameters.json.

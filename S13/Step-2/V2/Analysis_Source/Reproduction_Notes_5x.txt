@@ -1,0 +1,15 @@
+S13 5.0x sensitivity update
+
+Set S13_PROJECT_ROOT to the project root containing the uploaded original
+TIFFs, the delivered S13_Step2 1.0x outputs and the original work calculations.
+The update reads work/S13_Segmentation_[1-4].npz and verifies its baseline
+masks against the delivered 1.0x masks before calculating new masks.
+If needed, reconstruct those signals using the original 1.0x analysis
+scripts delivered in S13_Step2_All_Files.zip and the original TIFFs.
+Run s13_update_5x.py with NumPy, Pillow and SciPy available.
+
+The workbook builder uses @oai/artifact-tool in the Codex runtime. It reads
+work/S13_Workbook_Data_5x.json. A copy of that input is included here.
+
+5.0x sensitivity means dividing both previous positive log-contrast
+thresholds by five. Percentages are recalculated from the resulting masks.

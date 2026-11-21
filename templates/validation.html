@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Validation · Adhesion</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23141618'/%3E%3Crect x='9' y='9' width='14' height='14' rx='3' fill='%23e35b33'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+</head>
+<body>
+  <aside class="rail">
+    <a class="brand" href="/"><span class="brand-mark"></span><span>Adhesion</span></a>
+    <div class="rail-actions" style="margin-top:auto">
+      <a class="ghost" href="/">Workspace</a>
+    </div>
+    <div class="rail-foot"><span>seed <b>{{ report.seed if report.available else '–' }}</b></span><span>v{{ report.version if report.available else '–' }}</span></div>
+  </aside>
+
+  <main class="main">
+    <div class="validation">
+      <a class="back" href="/">← Workspace</a>
+
+      {% if not report.available %}
+        <h1>No report</h1>
+        <p class="lede">Run <code>python3 -m adhesion.validate</code>.</p>
+      {% else %}
+        <div class="eyebrow">VALIDATION · {{ report.version }} · SEED {{ report.seed }}</div>
+        <h1>{{ "Aligned." if report.all_pass else "Check." }}</h1>
+        <p class="lede">{{ report.method }}</p>
+
+        <div class="cards">
+          <div class="card"><b>{{ "%.2f"|format(report.measured_mean_pct) }}%</b><span>measured mean</span></div>
+          <div class="card"><b>{{ "%.2f"|format(report.s13_reference_mean_pct) }}%</b><span>S13 code</span></div>
+          <div class="card"><b>{{ "%.2f"|format(report.s16_reference_mean_pct) }}%</b><span>S16 independent</span></div>
+          <div class="card"><b>{{ "%.2f"|format(report.s18_reference_mean_pct) }}%</b><span>S18 independent</span></div>
+          <div class="card"><b>{{ "%+.2f"|format(report.s16_difference_pp) }} pp</b><span>S16 difference</span></div>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>View</th>
+              <th>Reference</th>
+              <th>Measured</th>
+              <th>Δ pp</th>
+              <th>IoU</th>
+              <th>Baseline</th>
+              <th>Same</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in report.images %}
+              <tr>
+                <td>{{ row.index }}</td>
+                <td>{{ "%.4f"|format(row.expected_s13_pct) }}</td>
+                <td>{{ "%.4f"|format(row.measured_pct) }}</td>
+                <td class="{{ 'good' if row.error_pp is not none and row.error_pp|abs <= 0.75 else 'bad' }}">{{ "%+.4f"|format(row.error_pp) }}</td>
+                <td>{{ "%.3f"|format(row.mask_iou) }}</td>
+                <td>{{ "%.4f"|format(row.measured_baseline_pct) }}</td>
+                <td class="{{ 'good' if row.deterministic else 'bad' }}">{{ "yes" if row.deterministic else "no" }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+        <div class="note">{{ report.input_note }}</div>
+
+        {% if report.ahmed and report.ahmed.available %}
+          <div class="eyebrow" style="margin-top:44px">AHMED THORCAM · PUBLISHED PAIRS</div>
+          <h1 style="font-size:clamp(28px, 3.4vw, 44px)">{{ "Reproduced." if report.ahmed.all_pass else "Check." }}</h1>
+          <p class="lede">
+            Each published pair uses its supplied 9 × 9 cell grid (S11: 9 × 8) and
+            analysis-domain mask, keyed by source SHA-256. Detector presets are the
+            documented per-sample starting points and remain adjustable in the workspace.
+          </p>
+
+          <div class="cards">
+            <div class="card"><b>{{ report.ahmed.pairs|length }}</b><span>published views</span></div>
+            <div class="card"><b>{{ "%.3f"|format(report.ahmed.max_abs_view_error_pp or 0) }} pp</b><span>max view error</span></div>
+            {% for group in report.ahmed.samples %}
+              <div class="card">
+                <b>{{ "%.4f"|format(group.measured_mean_pct or 0) }}%</b>
+                <span>{{ group.sample }} · published {{ "%.4f"|format(group.expected_mean_pct or 0) }}%</span>
+              </div>
+            {% endfor %}
+          </div>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Sample</th>
+                <th>View</th>
+                <th>Published</th>
+                <th>Measured</th>
+                <th>Δ pp</th>
+                <th>Eligible px</th>
+                <th>Same</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in report.ahmed.pairs %}
+                <tr>
+                  <td>{{ row.sample }}</td>
+                  <td>{{ row.index }}</td>
+                  <td>{{ "%.4f"|format(row.expected_pct) }}</td>
+                  <td>{{ "%.4f"|format(row.measured_pct) }}</td>
+                  <td class="{{ 'good' if row.error_pp is not none and row.error_pp|abs <= 0.5 else 'bad' }}">{{ "%+.4f"|format(row.error_pp) }}</td>
+                  <td>{{ row.eligible_pixels }}</td>
+                  <td class="{{ 'good' if row.deterministic else 'bad' }}">{{ "yes" if row.deterministic else "no" }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+          {% if report.ahmed.singles %}
+            <div class="note">
+              Single-image estimates:
+              {% for item in report.ahmed.singles %}
+                {{ item.image }} ({{ item.mode }}-only) → {{ "%.4f"|format(item.estimate_pct) }}%
+                {% if item.published_pct is not none %} vs published view {{ "%.4f"|format(item.published_pct) }}%{% endif %}
+                {% if item.deterministic %} · repeatable{% endif %}{% if not loop.last %}; {% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endif %}
+      {% endif %}
+    </div>
+  </main>
+</body>
+</html>

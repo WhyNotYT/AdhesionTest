@@ -1,0 +1,15 @@
+S18 STEP 2 - INDEPENDENT TAPED-IMAGE GRID COUNTS
+
+Image	Columns (horizontal)	Rows (vertical)	Total cells	Numbering
+S18_Taped_[1].tif	9	9	81	0-80
+S18_Taped_[2].tif	9	9	81	0-80
+S18_Taped_[3].tif	9	9	81	0-80
+S18_Taped_[4].tif	9	9	81	0-80
+
+The taped photographs were inspected for their visible score pattern: ten vertical score boundaries and ten horizontal score boundaries enclose nine columns and nine rows.
+The open coating margins outside the enclosing grid are not additional closed cells.
+All 81 cells are visible in every image. No whole cells were excluded.
+Numbering starts at the upper-left cell, proceeds left to right, then continues on the next row below.
+The Taped photographs retain their original orientation and full 1440 x 1080 pixel size.
+The matching Squared reference was transformed into the Taped image coordinate system for paired comparison.
+Curved reference groove paths were mapped to each corresponding Taped image after checking the Taped grid count.

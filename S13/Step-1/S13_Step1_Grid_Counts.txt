@@ -1,0 +1,33 @@
+S13 - STEP 1: GRID CELL COUNTS
+========================================
+
+Image                   Horizontal direction   Vertical direction   Total   Numbering
+                        (columns)              (rows)               cells
+S13_Squared_[1].tif      9                      9                    81      0-80
+S13_Squared_[2].tif      9                      9                    81      0-80
+S13_Squared_[3].tif      9                      9                    81      0-80
+S13_Squared_[4].tif      9                      9                    81      0-80
+
+Each image independently shows ten vertical scribe cuts and ten horizontal
+scribe cuts, enclosing nine columns and nine rows (9 x 9 = 81 cells).
+These are four views of the same grid: 81 physical cells, 324 cell-view entries.
+
+Numbering starts at the upper-left ENCLOSED cell, from left to right, then
+continues on the next row. Top row: 0-8; bottom row: 72-80.
+The surrounding material beyond the outermost cuts and the extended cut
+strokes outside that enclosed lattice are not additional bounded grid cells.
+
+The source images were examined independently; no previous sample count or
+previous annotation was used. Cut paths were traced separately in each source.
+Faint and discontinuous sections are connected by interpolation, guided by
+visible adjacent portions. Local boundary placement is approximate where the
+original cut is not clearly visible; a straight uniform grid was not imposed.
+No image required a 90-degree/180-degree correction. Each output retains its
+original orientation and 1440 x 1080 pixel dimensions.
+
+The fourth vertical cut from the left, including the outer border (between
+columns 2 and 3, counting columns from 0), is faint/discontinuous in all four
+exposures. It is supported by visible
+segments and the repeating cut lattice; its gaps have been interpolated.
+
+Step 1 establishes geometry only; no adhesion retention/loss is calculated.

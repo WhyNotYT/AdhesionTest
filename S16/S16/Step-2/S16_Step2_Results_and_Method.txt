@@ -1,0 +1,56 @@
+S16 - STEP 2: HIGH-SENSITIVITY IMAGE-AREA ESTIMATE
+==========================================================================
+
+Image     Grid   Total   Intact*  Damaged  Excluded  Retained AM %  Peeled AM %
+1        9x9    81      0       81       0            84.68         15.32
+2        9x9    81      0       81       0            84.71         15.29
+3        9x9    81      0       81       0            84.84         15.16
+4        9x9    81      0       81       0            84.75         15.25
+
+Four-photo arithmetic mean: retained AM 84.75%; estimated peeled AM 15.25%.
+
+* Intact cell means no loss pixels were detected under the stated criteria.
+All 81 cells show some detected change consistent with removal in each view.
+No whole cells are excluded. Original scraped groove pixels are excluded
+within the cells; this does not make a whole cell an excluded cell.
+
+Loss % = 100 x detected loss pixels / eligible original AM pixels.
+Retained % = 100 - Loss %.
+Eligible original AM pixels are inside the enclosed grid after removing
+the registered pre-tape scraped-groove mask. The same eligible-pixel
+denominator is used for both percentages. These are area ratios, not the
+fraction of cells classified as damaged.
+
+Interpretation: the main result is a high-sensitivity estimate. It includes
+new bright areas and new dark pits absent from the aligned reference. Dark
+pits are treated as probable coating loss. Grayscale photographs alone do
+not establish that every dark pit exposes Al rather than changed texture,
+shadow, displaced coating, or surface damage. The main result should not be
+reported as independently confirmed bare-Al area or adhesion force.
+
+Detection-threshold comparison: mean loss 9.20% with stricter criteria versus 15.25% with the main criteria.
+Bright-change subset only: mean 2.94% of eligible AM area. This is a diagnostic subset, not a validated true-loss bound.
+The threshold comparison is not a confidence interval. The four photos
+depict one specimen and are not independent experimental replicates.
+
+COLOR KEY
+Green: curved cell boundaries.
+Light transparent yellow: cells with no detected loss; also used in the
+    separate Yellow_Cells view to show every identified cell.
+Transparent orange: a cell containing one or more retained loss components.
+Transparent red: whole cells excluded from analysis (none here).
+Light blue: exactly the estimated loss-pixel set used in the main calculation.
+Original grooves are left uncolored in the combined loss calculation view.
+
+The binary masks are authoritative for pixel counts. Text labels and green
+boundaries in presentation images can obscure a few blue pixels visually;
+the loss mask preserves the full calculation set without text or lines.
+
+FILES
+For each of four views: Green_Boundaries, Yellow_Cells, Numbered_0-80,
+Cell_Status, Blue_Loss, Combined_Overlay, Transparent_Combined_Overlay,
+Squared_Taped_50-50_Aligned and Paired_Comparison.
+Separate count TXT, summary TXT/CSV, per-cell CSV and an Excel workbook.
+Calculation_Masks contains loss, eligible-AM and excluded-groove masks,
+the stricter threshold result, bright/dark diagnostic masks, cell labels,
+and curved boundary/registration definitions.

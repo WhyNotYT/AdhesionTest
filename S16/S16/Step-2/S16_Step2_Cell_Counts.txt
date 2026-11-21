@@ -1,0 +1,22 @@
+S16 - STEP 2: INDEPENDENT GRID COUNTS
+==============================================================
+
+Image                  Columns (horizontal)   Rows (vertical)   Total   Numbering
+S16_Taped_[1].tif     9                      9                 81      0-80
+S16_Taped_[2].tif     9                      9                 81      0-80
+S16_Taped_[3].tif     9                      9                 81      0-80
+S16_Taped_[4].tif     9                      9                 81      0-80
+
+Counting basis: each Taped image was inspected separately, with independent
+cut-contrast projection checks. Ten vertical and ten horizontal cuts enclose
+nine columns and nine rows. The broader outside coating margins and cut
+extensions beyond the enclosed grid are not counted as cells.
+
+Numbering starts at the upper-left enclosed cell: 0-8 on the first row,
+9-17 on the next, continuing to 72-80 on the bottom row.
+
+All Taped outputs use the original 1440 x 1080 pixel coordinate frame.
+Reference images were registered separately to their matching Taped images;
+the curved cut paths were transferred into the Taped coordinate frame.
+The images show the same physical sample; do not sum the counts as if they
+were four independent 81-cell specimens.

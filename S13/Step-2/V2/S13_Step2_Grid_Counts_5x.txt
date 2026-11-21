@@ -1,0 +1,12 @@
+S13 STEP-2 GRID COUNTS AT 5.0x SENSITIVITY
+
+Image               Columns  Rows  Total  Numbering
+S13_Taped_[1]       9        9     81     0-80
+S13_Taped_[2]       9        9     81     0-80
+S13_Taped_[3]       9        9     81     0-80
+S13_Taped_[4]       9        9     81     0-80
+
+The same measured grid is used for the 1.0x and 5.0x runs.
+All 81 cells are included in each image. Original scraped cut pixels and
+pre-existing foil candidates remain excluded from the measured AM area.
+The four views describe one physical 81-cell specimen.

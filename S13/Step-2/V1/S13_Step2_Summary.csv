@@ -1,0 +1,5 @@
+﻿image,columns_horizontal,rows_vertical,total_cells,intact_no_detected_loss_cells,damaged_cells,excluded_cells,eligible_AM_pixels,loss_pixels,retained_pixels,retained_AM_pct,peeled_AM_pct,scrape_excluded_pixels,preexisting_foil_excluded_pixels
+S13_Taped_[1],9,9,81,4,77,0,439270,5581,433689,98.72948300589614,1.270516994103854,105519,599
+S13_Taped_[2],9,9,81,6,75,0,438102,5572,432530,98.72815006550987,1.2718499344901415,106008,583
+S13_Taped_[3],9,9,81,1,80,0,437341,5684,431657,98.70032766193886,1.2996723380611468,106944,716
+S13_Taped_[4],9,9,81,1,80,0,435756,5175,430581,98.81240877922507,1.187591220774929,108896,180

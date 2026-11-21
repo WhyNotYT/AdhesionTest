@@ -1,0 +1,6 @@
+V1 seems to have too much Adhesion.
+
+V2 fixes this.
+
+Fix/Prompt/Instructions:
+Increase the sensitivity/intensity of the material loss detection/estimation to 5.0 times, and give the updated results.

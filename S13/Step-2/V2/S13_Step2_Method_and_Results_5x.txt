@@ -1,0 +1,58 @@
+S13 STEP-2 UPDATED RESULTS: 5.0x SENSITIVITY
+
+OPERATIONAL DEFINITION
+Sensitivity factor 5.0 is implemented by dividing BOTH original log-contrast
+thresholds by 5.0. This is a detector-setting change. The area percentages
+are recalculated by classifying the paired pixels at the new thresholds.
+The detected area is not expected to increase by exactly five times.
+
+Original brightness ratio 1.5 becomes 1.5^(1/5) = 1.0844717712.
+Original paired thresholds max(0.22, 2*sigma) become that full value / 5.0.
+For these four images, the updated paired threshold equals 0.4*sigma.
+The original 3-pixel, 8-connected component requirement remains in place.
+
+IMPORTANT INTERPRETATION
+The updated thresholds are below the measured brightness variation. They
+admit faint coating texture, lighting differences and residual alignment
+effects. Blue marks candidate material-loss pixels at this sensitivity.
+A percentage calculated from these pixels is an optical sensitivity
+estimate. The images do not confirm that every new blue pixel is bare Al.
+The physical sample has not changed between the two calculations.
+
+RESULTS
+Image            No loss  Damaged Excluded  Retained (%) Candidate loss (%)
+S13_Taped_[1]         0       81        0       82.9524            17.0476
+S13_Taped_[2]         0       81        0       82.8544            17.1456
+S13_Taped_[3]         0       81        0       82.2976            17.7024
+S13_Taped_[4]         0       81        0       82.2217            17.7783
+
+Mean 5.0x candidate loss: 17.4185%.
+Mean 5.0x remaining-area estimate: 82.5815%.
+Previous mean candidate loss: 1.2574%.
+Increase: 16.1611 percentage points.
+
+AREA CALCULATION
+Candidate loss (%) = 100 * selected blue pixels / eligible original AM pixels.
+Remaining-area estimate (%) = 100 - candidate loss (%).
+Registration, illumination correction, curved cell geometry, cell IDs,
+original scrape exclusions and original bare-foil exclusions are identical
+to the previous calculation. No whole cells are excluded.
+All original loss pixels remain included in the updated masks.
+Blue masks are not dilated for display.
+
+CELL CLASSIFICATION
+Yellow: no detected loss. Orange: at least one detected candidate component.
+Red: whole cell excluded (none). Green: registered grid boundary.
+At this 5.0x setting, every cell contains at least one candidate component.
+This does not mean every cell has substantial physical material removal.
+
+REPEATED VIEWS
+The mean is the arithmetic average of the four image-level area estimates.
+The images are repeated views of one specimen, not independent specimens.
+
+THRESHOLDS
+Image            Paired log 1x  Paired log 5x  Bright log 1x  Bright log 5x
+S13_Taped_[1]         0.251083       0.050217       0.405465       0.081093
+S13_Taped_[2]         0.248443       0.049689       0.405465       0.081093
+S13_Taped_[3]         0.268491       0.053698       0.405465       0.081093
+S13_Taped_[4]         0.301479       0.060296       0.405465       0.081093

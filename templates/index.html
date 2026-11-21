@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Adhesion</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23141618'/%3E%3Crect x='9' y='9' width='14' height='14' rx='3' fill='%23e35b33'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}?v={{ bootstrap.version }}">
+</head>
+<body>
+  <aside class="rail">
+    <a class="brand" href="/" aria-label="Adhesion home">
+      <span class="brand-mark"></span>
+      <span>Adhesion</span>
+    </a>
+
+    <label class="upload" title="Select Squared and Taped images in any order. One image gives a screening estimate.">
+      <input id="fileInput" type="file" multiple>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+      <span>Add images</span>
+    </label>
+
+    <div id="pairList" class="pair-list" aria-label="Image pairs"></div>
+
+    <div class="rail-actions">
+      <a class="ghost" href="/validation">Validate</a>
+    </div>
+
+    <div class="rail-foot">
+      <span>seed <b id="seedValue">–</b></span>
+      <span id="versionValue">–</span>
+    </div>
+  </aside>
+
+  <main class="main">
+    <section id="emptyState" class="empty">
+      <div class="empty-glyph">
+        <svg viewBox="0 0 96 72" aria-hidden="true">
+          <rect x="1" y="1" width="94" height="70" rx="4"/>
+          <path d="M12 54 30 36l10 9 14-17 20 26"/>
+          <circle cx="64" cy="19" r="6"/>
+        </svg>
+      </div>
+      <h1>Drop images</h1>
+      <p>Many Squared + Taped views pair automatically · one view gives an estimate</p>
+      <label class="upload upload-large">
+        <input id="emptyInput" type="file" multiple>
+        <span>Choose images</span>
+      </label>
+    </section>
+
+    <section id="workspace" class="workspace-shell" hidden>
+      <header class="topbar">
+        <div class="identity">
+          <div class="eyebrow">ANALYSIS <span id="modeBadge" class="mode-badge" hidden></span></div>
+          <h1 id="pairTitle">–</h1>
+          <div id="pairFiles" class="filenames">–</div>
+          <a id="csvLink" class="download-link" href="#" hidden>CSV ↓</a>
+        </div>
+
+        <div class="stat-row">
+          <div class="stat">
+            <span id="retainedValue" class="stat-number">–</span>
+            <span id="retainedLabel" class="stat-label">retained %</span>
+          </div>
+          <div class="stat accent">
+            <span id="peeledValue" class="stat-number">–</span>
+            <span id="peeledLabel" class="stat-label">peeled %</span>
+          </div>
+          <div class="stat">
+            <span id="damagedValue" class="stat-number">–</span>
+            <span id="damagedLabel" class="stat-label">damaged cells</span>
+          </div>
+          <div class="stat">
+            <span id="eligibleValue" class="stat-number">–</span>
+            <span id="eligibleLabel" class="stat-label">eligible px</span>
+          </div>
+        </div>
+      </header>
+
+      <nav class="tabs" aria-label="Analysis steps">
+        <button class="tab is-active" data-tab="align"><span>01</span>Align</button>
+        <button class="tab" data-tab="grid"><span>02</span>Grid</button>
+        <button class="tab" data-tab="signals"><span>03</span>Signals</button>
+        <button class="tab" data-tab="loss"><span>04</span>Loss</button>
+      </nav>
+
+      <div class="workspace">
+        <section class="viewer-panel">
+          <div class="viewer" id="viewer">
+            <img id="mainImage" alt="Analysis visualization">
+            <div id="loading" class="loading" hidden>
+              <span class="spinner"></span>
+              <span>Working</span>
+            </div>
+            <button id="zoomButton" class="icon-button zoom" title="Full size" aria-label="Full size">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M21 16v5h-5"/></svg>
+            </button>
+            <div id="viewerBadge" class="viewer-badge"></div>
+          </div>
+          <div id="viewStrip" class="view-strip" aria-label="Views"></div>
+        </section>
+
+        <aside class="controls-panel">
+          <div class="controls-head">
+            <h2 id="controlsTitle">Align</h2>
+            <button id="resetButton" class="text-button">Reset</button>
+          </div>
+          <div id="controls" class="controls"></div>
+          <div class="derived" id="derived"></div>
+        </aside>
+      </div>
+
+      <section class="bottom">
+        <div class="panel histogram-panel">
+          <div class="panel-head">
+            <h2 id="histTitle">Delta</h2>
+            <span id="histMeta"></span>
+          </div>
+          <canvas id="histCanvas" width="900" height="220"></canvas>
+        </div>
+        <div class="panel cells-panel">
+          <div class="panel-head">
+            <h2>Cells</h2>
+            <span id="cellsMeta"></span>
+          </div>
+          <div id="cellGrid" class="cell-grid"></div>
+        </div>
+      </section>
+    </section>
+
+    <div id="toast" class="toast" hidden></div>
+  </main>
+
+  <dialog id="zoomDialog" class="zoom-dialog">
+    <button id="closeZoom" class="icon-button close" aria-label="Close">
+      <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <img id="zoomImage" alt="Full size visualization">
+  </dialog>
+
+  <script>
+    window.__BOOT__ = {{ bootstrap | tojson }};
+  </script>
+  <script src="{{ url_for('static', filename='app.js') }}?v={{ bootstrap.version }}"></script>
+</body>
+</html>

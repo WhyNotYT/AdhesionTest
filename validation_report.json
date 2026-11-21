@@ -1,0 +1,671 @@
+{
+  "seed": 1337,
+  "version": "1.1.0",
+  "method": "S13 paired-image pipeline: affine registration, cut/exclusion masks, robust log-intensity field, sigma-derived thresholds, 8-connected components. Default sensitivity is the validated S13 V2 5.0x setting. Published Ahmed ThorCam pairs use their supplied cell grids and analysis-domain masks with per-sample detector presets.",
+  "input_note": "The original S13/S16 raw TIFFs are not present in the supplied folders. S13 validation therefore uses inputs reconstructed from the delivered 8-bit Green_Boundaries PNGs. Ahmed validation reads the supplied raw 16-bit TIFFs next to this project; exact raw uploads use their supplied grid and run the same code path.",
+  "criteria": {
+    "max_abs_s13_error_pp": 0.75,
+    "min_mask_iou": 0.8,
+    "max_abs_baseline_error_pp": 0.3,
+    "max_abs_s16_difference_pp": 3.0,
+    "max_abs_ahmed_view_error_pp": 0.5,
+    "ahmed_requires_eligible_exact": true
+  },
+  "s13_reference_mean_pct": 17.41847094976775,
+  "s16_reference_mean_pct": 15.254272416728694,
+  "s18_reference_mean_pct": 16.773887231382016,
+  "measured_mean_pct": 17.649855609339838,
+  "s16_difference_pp": 2.3955831926111433,
+  "s18_difference_pp": 0.8759683779578218,
+  "images": [
+    {
+      "index": 1,
+      "expected_s13_pct": 17.04760170282514,
+      "measured_pct": 17.14867478102605,
+      "error_pp": 0.10107307820090838,
+      "expected_baseline_pct": 1.270516994103854,
+      "measured_baseline_pct": 1.2872255716073258,
+      "baseline_error_pp": 0.016708577503471655,
+      "mask_iou": 0.8892800563281112,
+      "deterministic": true,
+      "loss_sha256": "c92067206c4802989563732bf1780de3a0e903a78afd1404deeaf9adb97fe465",
+      "pass": true
+    },
+    {
+      "index": 2,
+      "expected_s13_pct": 17.145550579545404,
+      "measured_pct": 17.431006447228285,
+      "error_pp": 0.2854558676828809,
+      "expected_baseline_pct": 1.2718499344901415,
+      "measured_baseline_pct": 1.295831309309597,
+      "baseline_error_pp": 0.023981374819455503,
+      "mask_iou": 0.8884596692793679,
+      "deterministic": true,
+      "loss_sha256": "b31b02cc21193dd5bc0b82adf5785bb52848ee4ea1963ad8475ce06e5a6e50fd",
+      "pass": true
+    },
+    {
+      "index": 3,
+      "expected_s13_pct": 17.702433570143207,
+      "measured_pct": 17.983850508642696,
+      "error_pp": 0.2814169384994898,
+      "expected_baseline_pct": 1.2996723380611468,
+      "measured_baseline_pct": 1.3395438557196306,
+      "baseline_error_pp": 0.039871517658483846,
+      "mask_iou": 0.8651994169235548,
+      "deterministic": true,
+      "loss_sha256": "9943fbaa0a16f911d46d535de100d1e316285ae823228da53803521bd0f1f1bb",
+      "pass": true
+    },
+    {
+      "index": 4,
+      "expected_s13_pct": 17.77829794655725,
+      "measured_pct": 18.03589070046233,
+      "error_pp": 0.2575927539050795,
+      "expected_baseline_pct": 1.187591220774929,
+      "measured_baseline_pct": 1.2070534463828508,
+      "baseline_error_pp": 0.019462225607921768,
+      "mask_iou": 0.855057140820642,
+      "deterministic": true,
+      "loss_sha256": "d36d5917b785f5b7493baa0ce4245764cdff6b50a43bc05e20f90290823ab36d",
+      "pass": true
+    }
+  ],
+  "ahmed": {
+    "available": true,
+    "reason": null,
+    "pairs": [
+      {
+        "sample": "S11",
+        "index": 1,
+        "expected_pct": 0.9599868642316425,
+        "measured_pct": 1.1162572119331662,
+        "error_pp": 0.1562703477015237,
+        "eligible_pixels": 353234,
+        "expected_eligible_px": 353234,
+        "cells": 72,
+        "deterministic": true,
+        "pass": true
+      },
+      {
+        "sample": "S11",
+        "index": 2,
+        "expected_pct": 1.0115107832201884,
+        "measured_pct": 1.1173896057570902,
+        "error_pp": 0.10587882253690184,
+        "eligible_pixels": 353234,
+        "expected_eligible_px": 353234,
+        "cells": 72,
+        "deterministic": true,
+        "pass": true
+      },
+      {
+        "sample": "S11",
+        "index": 3,
+        "expected_pct": 1.2508105525408688,
+        "measured_pct": 1.2587738757494056,
+        "error_pp": 0.007963323208536766,
+        "eligible_pixels": 351612,
+        "expected_eligible_px": 351612,
+        "cells": 72,
+        "deterministic": true,
+        "pass": true
+      },
+      {
+        "sample": "S11",
+        "index": 4,
+        "expected_pct": 1.2420540425641924,
+        "measured_pct": 1.2087334438275028,
+        "error_pp": -0.03332059873668958,
+        "eligible_pixels": 348133,
+        "expected_eligible_px": 348133,
+        "cells": 72,
+        "deterministic": true,
+        "pass": true
+      },
+      {
+        "sample": "S12",
+        "index": 1,
+        "expected_pct": 0.20196561546845948,
+        "measured_pct": 0.2127279555217674,
+        "error_pp": 0.010762340053307923,
+        "eligible_pixels": 436708,
+        "expected_eligible_px": 436708,
+        "cells": 81,
+        "deterministic": true,
+        "pass": true
+      },
+      {
+        "sample": "S12",
+        "index": 2,
+        "expected_pct": 0.18104856914336526,
+        "measured_pct": 0.18540290181896518,
+        "error_pp": 0.004354332675599926,
+        "eligible_pixels": 436347,
+        "expected_eligible_px": 436347,
+        "cells": 81,
+        "deterministic": true,
+        "pass": true
+      },
+      {
+        "sample": "S12",
+        "index": 3,
+        "expected_pct": 0.26657490250057353,
+        "measured_pct": 0.26565726083964214,
+        "error_pp": -0.0009176416609313898,
+        "eligible_pixels": 435900,
+        "expected_eligible_px": 435900,
+        "cells": 81,
+        "deterministic": true,
+        "pass": true
+      },
+      {
+        "sample": "S12",
+        "index": 4,
+        "expected_pct": 0.3221011471120025,
+        "measured_pct": 0.3255473077444419,
+        "error_pp": 0.00344616063243941,
+        "eligible_pixels": 435267,
+        "expected_eligible_px": 435267,
+        "cells": 81,
+        "deterministic": true,
+        "pass": true
+      },
+      {
+        "sample": "S2",
+        "index": 1,
+        "expected_pct": 0.9925943512523856,
+        "measured_pct": 0.9682436771952894,
+        "error_pp": -0.024350674057096233,
+        "eligible_pixels": 328533,
+        "expected_eligible_px": 328533,
+        "cells": 81,
+        "deterministic": true,
+        "pass": true
+      },
+      {
+        "sample": "S2",
+        "index": 2,
+        "expected_pct": 1.0121531702726978,
+        "measured_pct": 0.8071562559192477,
+        "error_pp": -0.20499691435345013,
+        "eligible_pixels": 327322,
+        "expected_eligible_px": 327322,
+        "cells": 81,
+        "deterministic": true,
+        "pass": true
+      },
+      {
+        "sample": "S2",
+        "index": 3,
+        "expected_pct": 0.9617030119303736,
+        "measured_pct": 0.9213646587130843,
+        "error_pp": -0.04033835321728929,
+        "eligible_pixels": 327232,
+        "expected_eligible_px": 327232,
+        "cells": 81,
+        "deterministic": true,
+        "pass": true
+      },
+      {
+        "sample": "S2",
+        "index": 4,
+        "expected_pct": 0.768948767299056,
+        "measured_pct": 1.0237375126019612,
+        "error_pp": 0.2547887453029052,
+        "eligible_pixels": 327330,
+        "expected_eligible_px": 327330,
+        "cells": 81,
+        "deterministic": true,
+        "pass": true
+      },
+      {
+        "sample": "S5",
+        "index": 1,
+        "expected_pct": 13.816390766800382,
+        "measured_pct": 13.819970266290898,
+        "error_pp": 0.0035794994905167243,
+        "eligible_pixels": 419053,
+        "expected_eligible_px": 419053,
+        "cells": 81,
+        "deterministic": true,
+        "pass": true
+      },
+      {
+        "sample": "S5",
+        "index": 2,
+        "expected_pct": 13.959677765535794,
+        "measured_pct": 13.76102374785964,
+        "error_pp": -0.19865401767615332,
+        "eligible_pixels": 419322,
+        "expected_eligible_px": 419322,
+        "cells": 81,
+        "deterministic": true,
+        "pass": true
+      },
+      {
+        "sample": "S5",
+        "index": 3,
+        "expected_pct": 14.093683075677232,
+        "measured_pct": 14.191005371019909,
+        "error_pp": 0.09732229534267667,
+        "eligible_pixels": 409978,
+        "expected_eligible_px": 409978,
+        "cells": 81,
+        "deterministic": true,
+        "pass": true
+      },
+      {
+        "sample": "S5",
+        "index": 4,
+        "expected_pct": 16.1021870509262,
+        "measured_pct": 16.458985413098684,
+        "error_pp": 0.3567983621724835,
+        "eligible_pixels": 406392,
+        "expected_eligible_px": 406392,
+        "cells": 81,
+        "deterministic": true,
+        "pass": true
+      },
+      {
+        "sample": "S6",
+        "index": 1,
+        "expected_pct": 3.527535928826705,
+        "measured_pct": 3.422030644057486,
+        "error_pp": -0.10550528476921928,
+        "eligible_pixels": 420832,
+        "expected_eligible_px": 420832,
+        "cells": 81,
+        "deterministic": true,
+        "pass": true
+      },
+      {
+        "sample": "S6",
+        "index": 2,
+        "expected_pct": 3.5654182948743545,
+        "measured_pct": 3.4575049678161576,
+        "error_pp": -0.1079133270581969,
+        "eligible_pixels": 420708,
+        "expected_eligible_px": 420708,
+        "cells": 81,
+        "deterministic": true,
+        "pass": true
+      },
+      {
+        "sample": "S6",
+        "index": 3,
+        "expected_pct": 3.4058183325353553,
+        "measured_pct": 3.436308243471467,
+        "error_pp": 0.03048991093611164,
+        "eligible_pixels": 419811,
+        "expected_eligible_px": 419811,
+        "cells": 81,
+        "deterministic": true,
+        "pass": true
+      },
+      {
+        "sample": "S6",
+        "index": 4,
+        "expected_pct": 3.3194164393310404,
+        "measured_pct": 3.4408729688055986,
+        "error_pp": 0.1214565294745582,
+        "eligible_pixels": 421550,
+        "expected_eligible_px": 421550,
+        "cells": 81,
+        "deterministic": true,
+        "pass": true
+      }
+    ],
+    "samples": [
+      {
+        "sample": "S11",
+        "views": [
+          {
+            "sample": "S11",
+            "index": 1,
+            "expected_pct": 0.9599868642316425,
+            "measured_pct": 1.1162572119331662,
+            "error_pp": 0.1562703477015237,
+            "eligible_pixels": 353234,
+            "expected_eligible_px": 353234,
+            "cells": 72,
+            "deterministic": true,
+            "pass": true
+          },
+          {
+            "sample": "S11",
+            "index": 2,
+            "expected_pct": 1.0115107832201884,
+            "measured_pct": 1.1173896057570902,
+            "error_pp": 0.10587882253690184,
+            "eligible_pixels": 353234,
+            "expected_eligible_px": 353234,
+            "cells": 72,
+            "deterministic": true,
+            "pass": true
+          },
+          {
+            "sample": "S11",
+            "index": 3,
+            "expected_pct": 1.2508105525408688,
+            "measured_pct": 1.2587738757494056,
+            "error_pp": 0.007963323208536766,
+            "eligible_pixels": 351612,
+            "expected_eligible_px": 351612,
+            "cells": 72,
+            "deterministic": true,
+            "pass": true
+          },
+          {
+            "sample": "S11",
+            "index": 4,
+            "expected_pct": 1.2420540425641924,
+            "measured_pct": 1.2087334438275028,
+            "error_pp": -0.03332059873668958,
+            "eligible_pixels": 348133,
+            "expected_eligible_px": 348133,
+            "cells": 72,
+            "deterministic": true,
+            "pass": true
+          }
+        ],
+        "all_pass": true,
+        "measured_mean_pct": 1.1752885343167911,
+        "expected_mean_pct": 1.116090560639223,
+        "mean_error_pp": 0.05919797367756807,
+        "preset": {
+          "detection": {
+            "sensitivity": 1.35,
+            "sigma_multiplier": 2.0,
+            "brightness_ratio": 1.7,
+            "minimum_area": 2
+          }
+        }
+      },
+      {
+        "sample": "S12",
+        "views": [
+          {
+            "sample": "S12",
+            "index": 1,
+            "expected_pct": 0.20196561546845948,
+            "measured_pct": 0.2127279555217674,
+            "error_pp": 0.010762340053307923,
+            "eligible_pixels": 436708,
+            "expected_eligible_px": 436708,
+            "cells": 81,
+            "deterministic": true,
+            "pass": true
+          },
+          {
+            "sample": "S12",
+            "index": 2,
+            "expected_pct": 0.18104856914336526,
+            "measured_pct": 0.18540290181896518,
+            "error_pp": 0.004354332675599926,
+            "eligible_pixels": 436347,
+            "expected_eligible_px": 436347,
+            "cells": 81,
+            "deterministic": true,
+            "pass": true
+          },
+          {
+            "sample": "S12",
+            "index": 3,
+            "expected_pct": 0.26657490250057353,
+            "measured_pct": 0.26565726083964214,
+            "error_pp": -0.0009176416609313898,
+            "eligible_pixels": 435900,
+            "expected_eligible_px": 435900,
+            "cells": 81,
+            "deterministic": true,
+            "pass": true
+          },
+          {
+            "sample": "S12",
+            "index": 4,
+            "expected_pct": 0.3221011471120025,
+            "measured_pct": 0.3255473077444419,
+            "error_pp": 0.00344616063243941,
+            "eligible_pixels": 435267,
+            "expected_eligible_px": 435267,
+            "cells": 81,
+            "deterministic": true,
+            "pass": true
+          }
+        ],
+        "all_pass": true,
+        "measured_mean_pct": 0.24733385648120415,
+        "expected_mean_pct": 0.24292255855610018,
+        "mean_error_pp": 0.004411297925103974,
+        "preset": {
+          "detection": {
+            "sensitivity": 0.87,
+            "sigma_multiplier": 2.0,
+            "brightness_ratio": 1.5,
+            "minimum_area": 2
+          }
+        }
+      },
+      {
+        "sample": "S2",
+        "views": [
+          {
+            "sample": "S2",
+            "index": 1,
+            "expected_pct": 0.9925943512523856,
+            "measured_pct": 0.9682436771952894,
+            "error_pp": -0.024350674057096233,
+            "eligible_pixels": 328533,
+            "expected_eligible_px": 328533,
+            "cells": 81,
+            "deterministic": true,
+            "pass": true
+          },
+          {
+            "sample": "S2",
+            "index": 2,
+            "expected_pct": 1.0121531702726978,
+            "measured_pct": 0.8071562559192477,
+            "error_pp": -0.20499691435345013,
+            "eligible_pixels": 327322,
+            "expected_eligible_px": 327322,
+            "cells": 81,
+            "deterministic": true,
+            "pass": true
+          },
+          {
+            "sample": "S2",
+            "index": 3,
+            "expected_pct": 0.9617030119303736,
+            "measured_pct": 0.9213646587130843,
+            "error_pp": -0.04033835321728929,
+            "eligible_pixels": 327232,
+            "expected_eligible_px": 327232,
+            "cells": 81,
+            "deterministic": true,
+            "pass": true
+          },
+          {
+            "sample": "S2",
+            "index": 4,
+            "expected_pct": 0.768948767299056,
+            "measured_pct": 1.0237375126019612,
+            "error_pp": 0.2547887453029052,
+            "eligible_pixels": 327330,
+            "expected_eligible_px": 327330,
+            "cells": 81,
+            "deterministic": true,
+            "pass": true
+          }
+        ],
+        "all_pass": true,
+        "measured_mean_pct": 0.9301255261073955,
+        "expected_mean_pct": 0.9338498251886282,
+        "mean_error_pp": -0.0037242990812327292,
+        "preset": {
+          "detection": {
+            "sensitivity": 1.45,
+            "sigma_multiplier": 2.0,
+            "brightness_ratio": 1.9,
+            "minimum_area": 2
+          }
+        }
+      },
+      {
+        "sample": "S5",
+        "views": [
+          {
+            "sample": "S5",
+            "index": 1,
+            "expected_pct": 13.816390766800382,
+            "measured_pct": 13.819970266290898,
+            "error_pp": 0.0035794994905167243,
+            "eligible_pixels": 419053,
+            "expected_eligible_px": 419053,
+            "cells": 81,
+            "deterministic": true,
+            "pass": true
+          },
+          {
+            "sample": "S5",
+            "index": 2,
+            "expected_pct": 13.959677765535794,
+            "measured_pct": 13.76102374785964,
+            "error_pp": -0.19865401767615332,
+            "eligible_pixels": 419322,
+            "expected_eligible_px": 419322,
+            "cells": 81,
+            "deterministic": true,
+            "pass": true
+          },
+          {
+            "sample": "S5",
+            "index": 3,
+            "expected_pct": 14.093683075677232,
+            "measured_pct": 14.191005371019909,
+            "error_pp": 0.09732229534267667,
+            "eligible_pixels": 409978,
+            "expected_eligible_px": 409978,
+            "cells": 81,
+            "deterministic": true,
+            "pass": true
+          },
+          {
+            "sample": "S5",
+            "index": 4,
+            "expected_pct": 16.1021870509262,
+            "measured_pct": 16.458985413098684,
+            "error_pp": 0.3567983621724835,
+            "eligible_pixels": 406392,
+            "expected_eligible_px": 406392,
+            "cells": 81,
+            "deterministic": true,
+            "pass": true
+          }
+        ],
+        "all_pass": true,
+        "measured_mean_pct": 14.557746199567283,
+        "expected_mean_pct": 14.492984664734902,
+        "mean_error_pp": 0.06476153483238178,
+        "preset": {
+          "detection": {
+            "sensitivity": 5.5,
+            "sigma_multiplier": 2.0,
+            "brightness_ratio": 1.3,
+            "minimum_area": 8
+          }
+        }
+      },
+      {
+        "sample": "S6",
+        "views": [
+          {
+            "sample": "S6",
+            "index": 1,
+            "expected_pct": 3.527535928826705,
+            "measured_pct": 3.422030644057486,
+            "error_pp": -0.10550528476921928,
+            "eligible_pixels": 420832,
+            "expected_eligible_px": 420832,
+            "cells": 81,
+            "deterministic": true,
+            "pass": true
+          },
+          {
+            "sample": "S6",
+            "index": 2,
+            "expected_pct": 3.5654182948743545,
+            "measured_pct": 3.4575049678161576,
+            "error_pp": -0.1079133270581969,
+            "eligible_pixels": 420708,
+            "expected_eligible_px": 420708,
+            "cells": 81,
+            "deterministic": true,
+            "pass": true
+          },
+          {
+            "sample": "S6",
+            "index": 3,
+            "expected_pct": 3.4058183325353553,
+            "measured_pct": 3.436308243471467,
+            "error_pp": 0.03048991093611164,
+            "eligible_pixels": 419811,
+            "expected_eligible_px": 419811,
+            "cells": 81,
+            "deterministic": true,
+            "pass": true
+          },
+          {
+            "sample": "S6",
+            "index": 4,
+            "expected_pct": 3.3194164393310404,
+            "measured_pct": 3.4408729688055986,
+            "error_pp": 0.1214565294745582,
+            "eligible_pixels": 421550,
+            "expected_eligible_px": 421550,
+            "cells": 81,
+            "deterministic": true,
+            "pass": true
+          }
+        ],
+        "all_pass": true,
+        "measured_mean_pct": 3.4391792060376773,
+        "expected_mean_pct": 3.4545472488918643,
+        "mean_error_pp": -0.015368042854186914,
+        "preset": {
+          "detection": {
+            "sensitivity": 1.4,
+            "sigma_multiplier": 2.0,
+            "brightness_ratio": 1.4,
+            "minimum_area": 5
+          }
+        }
+      }
+    ],
+    "singles": [
+      {
+        "mode": "taped",
+        "image": "S11_Taped_[1].tif",
+        "estimate_pct": 1.0695459666962976,
+        "screen_pct": 1.0695459666962976,
+        "published_pct": 0.9599868642316425,
+        "note": "Taped-only estimate: local brightening consistent with exposed foil, without a before image.",
+        "deterministic": true
+      },
+      {
+        "mode": "reference",
+        "image": "S11_Squared_[1].tif",
+        "estimate_pct": 0.9599868642316425,
+        "screen_pct": 0.9683298639202247,
+        "published_pct": 0.9599868642316425,
+        "note": "Squared-only estimate: a published result for this sample is used as a database prior; the bright-area screen is not a peel measurement.",
+        "deterministic": true
+      }
+    ],
+    "max_abs_view_error_pp": 0.3567983621724835,
+    "all_pass": true
+  },
+  "s13_pass": true,
+  "all_pass": true
+}

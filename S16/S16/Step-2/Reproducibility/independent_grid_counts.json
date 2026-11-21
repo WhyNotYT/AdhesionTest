@@ -1,0 +1,122 @@
+[
+  {
+    "image": 1,
+    "vertical_cut_x_projection_peaks": [
+      404,
+      485,
+      563,
+      650,
+      732,
+      816,
+      898,
+      979,
+      1059,
+      1140
+    ],
+    "horizontal_cut_y_projection_peaks": [
+      162,
+      242,
+      325,
+      405,
+      488,
+      573,
+      655,
+      739,
+      817,
+      899
+    ],
+    "columns": 9,
+    "rows": 9,
+    "cells": 81
+  },
+  {
+    "image": 2,
+    "vertical_cut_x_projection_peaks": [
+      404,
+      486,
+      564,
+      650,
+      732,
+      817,
+      899,
+      979,
+      1059,
+      1141
+    ],
+    "horizontal_cut_y_projection_peaks": [
+      162,
+      242,
+      324,
+      404,
+      488,
+      572,
+      654,
+      738,
+      816,
+      898
+    ],
+    "columns": 9,
+    "rows": 9,
+    "cells": 81
+  },
+  {
+    "image": 3,
+    "vertical_cut_x_projection_peaks": [
+      404,
+      486,
+      564,
+      650,
+      732,
+      817,
+      899,
+      979,
+      1059,
+      1140
+    ],
+    "horizontal_cut_y_projection_peaks": [
+      162,
+      242,
+      324,
+      405,
+      488,
+      572,
+      654,
+      738,
+      816,
+      898
+    ],
+    "columns": 9,
+    "rows": 9,
+    "cells": 81
+  },
+  {
+    "image": 4,
+    "vertical_cut_x_projection_peaks": [
+      404,
+      486,
+      564,
+      650,
+      732,
+      816,
+      898,
+      979,
+      1059,
+      1140
+    ],
+    "horizontal_cut_y_projection_peaks": [
+      162,
+      242,
+      325,
+      405,
+      488,
+      573,
+      655,
+      739,
+      817,
+      899
+    ],
+    "columns": 9,
+    "rows": 9,
+    "cells": 81
+  }
+]

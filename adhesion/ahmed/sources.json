@@ -1,0 +1,393 @@
+{
+  "note": "Bundled Ahmed ThorCam Step-1/Step-2 cell grids and analysis-domain masks, keyed by source SHA-256. Expected values are the published per-view results.",
+  "pairs": [
+    {
+      "sample": "S11",
+      "index": 1,
+      "reference_sha": "76214fac19602a5e3d0c23b267efd3b515cfd1232fae680bb774141637abe8db",
+      "taped_sha": "eb13d55bbb6bb052095bf7da9972e418e739b7ed883da428a69e4b2cb615c8b5",
+      "reference_name": "S11_Squared_[1].tif",
+      "taped_name": "S11_Taped_[1].tif",
+      "rows": 8,
+      "cols": 9,
+      "grid": "grids/S11_1.png",
+      "eligible": "eligible/S11_1.png",
+      "expected": {
+        "peeled_pct": 0.9599868642316425,
+        "retained_pct": 99.04001313576836,
+        "eligible_px": 353234,
+        "loss_px": 3391,
+        "conservative_pct": 0.2055294790422213,
+        "permissive_pct": 2.8040902064920137
+      }
+    },
+    {
+      "sample": "S11",
+      "index": 2,
+      "reference_sha": "30a1334f3090cde3df242df5875cd1180449f7611e2be571e232592942ea6e02",
+      "taped_sha": "871ea3b6d8f9040ac5456bf5eb339203dd2ad4f4ee26e7839cc2476b48ab8257",
+      "reference_name": "S11_Squared_[2].tif",
+      "taped_name": "S11_Taped_[2].tif",
+      "rows": 8,
+      "cols": 9,
+      "grid": "grids/S11_2.png",
+      "eligible": "eligible/S11_2.png",
+      "expected": {
+        "peeled_pct": 1.0115107832201884,
+        "retained_pct": 98.98848921677981,
+        "eligible_px": 353234,
+        "loss_px": 3573,
+        "conservative_pct": 0.20892666051399358,
+        "permissive_pct": 2.8324000520901156
+      }
+    },
+    {
+      "sample": "S11",
+      "index": 3,
+      "reference_sha": "04dfef2dccb0304d4a6dbc15d8e8707a69573226f363d66e896fd3d005c62471",
+      "taped_sha": "24930ca00c033f7e58c15c588831d9a14c044dc922a331b0da5891df1a8b937d",
+      "reference_name": "S11_Squared_[3].tif",
+      "taped_name": "S11_Taped_[3].tif",
+      "rows": 8,
+      "cols": 9,
+      "grid": "grids/S11_3.png",
+      "eligible": "eligible/S11_3.png",
+      "expected": {
+        "peeled_pct": 1.2508105525408688,
+        "retained_pct": 98.74918944745913,
+        "eligible_px": 351612,
+        "loss_px": 4398,
+        "conservative_pct": 0.27871631229878385,
+        "permissive_pct": 3.3790086800222974
+      }
+    },
+    {
+      "sample": "S11",
+      "index": 4,
+      "reference_sha": "c2335cd8d8c6c41f4b20747a4cf2258c5a8496d9ff1b5d2bb375a30f39ad8c27",
+      "taped_sha": "d1ab9b85c688a3ff6f9c43d66b4ce0bb76959c1bdf7171c47b766407561408c8",
+      "reference_name": "S11_Squared_[4].tif",
+      "taped_name": "S11_Taped_[4].tif",
+      "rows": 8,
+      "cols": 9,
+      "grid": "grids/S11_4.png",
+      "eligible": "eligible/S11_4.png",
+      "expected": {
+        "peeled_pct": 1.2420540425641924,
+        "retained_pct": 98.75794595743581,
+        "eligible_px": 348133,
+        "loss_px": 4324,
+        "conservative_pct": 0.2812143634760278,
+        "permissive_pct": 3.4742469113815697
+      }
+    },
+    {
+      "sample": "S12",
+      "index": 1,
+      "reference_sha": "c78e2ab8909133ef7c91037bb4477f43bf2958f8a0c0c9595e89468fe5a814d2",
+      "taped_sha": "fc3b7f619aeb1fbfbc7ed05fae4f0b5eeaa8ca95a9de91c452ae433b05afdea1",
+      "reference_name": "S12_Squared_[1].tif",
+      "taped_name": "S12_Taped_[1].tif",
+      "rows": 9,
+      "cols": 9,
+      "grid": "grids/S12_1.png",
+      "eligible": "eligible/S12_1.png",
+      "expected": {
+        "peeled_pct": 0.20196561546845948,
+        "retained_pct": 99.79803438453155,
+        "eligible_px": 436708,
+        "loss_px": 882
+      }
+    },
+    {
+      "sample": "S12",
+      "index": 2,
+      "reference_sha": "93d26eb8875cc9683be3150191b48d702ce9d5347bb2e9033603cd5c01427447",
+      "taped_sha": "41e7b9f011549915b4358b811fb3062808b2c8ec5bdfd3641cce7fa08fbae57e",
+      "reference_name": "S12_Squared_[2].tif",
+      "taped_name": "S12_Taped_[2].tif",
+      "rows": 9,
+      "cols": 9,
+      "grid": "grids/S12_2.png",
+      "eligible": "eligible/S12_2.png",
+      "expected": {
+        "peeled_pct": 0.18104856914336526,
+        "retained_pct": 99.81895143085664,
+        "eligible_px": 436347,
+        "loss_px": 790
+      }
+    },
+    {
+      "sample": "S12",
+      "index": 3,
+      "reference_sha": "6450999aedd464d161b60acbd853a8284e78682b28c110724688d1d077e8a7f4",
+      "taped_sha": "795aeb03382ffe01895aad20937f90e35dd02bbae25c1279b3a1b75ccb45ac07",
+      "reference_name": "S12_Squared_[3].tif",
+      "taped_name": "S12_Taped_[3].tif",
+      "rows": 9,
+      "cols": 9,
+      "grid": "grids/S12_3.png",
+      "eligible": "eligible/S12_3.png",
+      "expected": {
+        "peeled_pct": 0.26657490250057353,
+        "retained_pct": 99.73342509749943,
+        "eligible_px": 435900,
+        "loss_px": 1162
+      }
+    },
+    {
+      "sample": "S12",
+      "index": 4,
+      "reference_sha": "9078f905db23a1e842495a2de2fd4143652a46a6b4b5ca4ecd89d90ccfa785e5",
+      "taped_sha": "8db19ffd457afd2f43a26860786568feef0b7fee8b64d6ffa320295ff59ba62a",
+      "reference_name": "S12_Squared_[4].tif",
+      "taped_name": "S12_Taped_[4].tif",
+      "rows": 9,
+      "cols": 9,
+      "grid": "grids/S12_4.png",
+      "eligible": "eligible/S12_4.png",
+      "expected": {
+        "peeled_pct": 0.3221011471120025,
+        "retained_pct": 99.677898852888,
+        "eligible_px": 435267,
+        "loss_px": 1402
+      }
+    },
+    {
+      "sample": "S2",
+      "index": 1,
+      "reference_sha": "2719bc25e4534b391fcd9740bb16eb07d84eaddd08c9ce18f684c52eb7dd7930",
+      "taped_sha": "f659bc6bd6cbb3bb9699a1137d2078dc62c008baae285d51cd519f1b57bf5060",
+      "reference_name": "S2_Squared_[1].tif",
+      "taped_name": "S2_Taped_[1].tif",
+      "rows": 9,
+      "cols": 9,
+      "grid": "grids/S2_1.png",
+      "eligible": "eligible/S2_1.png",
+      "expected": {
+        "peeled_pct": 0.9925943512523856,
+        "retained_pct": 99.00740564874762,
+        "eligible_px": 328533,
+        "loss_px": 3261,
+        "strict_pct": 0.3345173848593596,
+        "baseline_pct": 0.3609987428964518
+      }
+    },
+    {
+      "sample": "S2",
+      "index": 2,
+      "reference_sha": "3eecd53443553ef3068b15198df2c7011549b151abea5bfba984ffaf368cb457",
+      "taped_sha": "ef9db63a530f3bbf4e826902797b51b2686caf9a08375eefb262c1ceb635d60f",
+      "reference_name": "S2_Squared_[2].tif",
+      "taped_name": "S2_Taped_[2].tif",
+      "rows": 9,
+      "cols": 9,
+      "grid": "grids/S2_2.png",
+      "eligible": "eligible/S2_2.png",
+      "expected": {
+        "peeled_pct": 1.0121531702726978,
+        "retained_pct": 98.9878468297273,
+        "eligible_px": 327322,
+        "loss_px": 3313,
+        "strict_pct": 0.35408557933777746,
+        "baseline_pct": 0.3864695926335535
+      }
+    },
+    {
+      "sample": "S2",
+      "index": 3,
+      "reference_sha": "53963ba01b0e9a6b7a22e405abbe998a24de1d5780b3eef62840d5816b46c021",
+      "taped_sha": "0cb7e0303c7712ec46de03e08ddf71b8e87bad1bc6613dc03c48845ccef014dc",
+      "reference_name": "S2_Squared_[3].tif",
+      "taped_name": "S2_Taped_[3].tif",
+      "rows": 9,
+      "cols": 9,
+      "grid": "grids/S2_3.png",
+      "eligible": "eligible/S2_3.png",
+      "expected": {
+        "peeled_pct": 0.9617030119303736,
+        "retained_pct": 99.03829698806963,
+        "eligible_px": 327232,
+        "loss_px": 3147,
+        "strict_pct": 0.33065225894778016,
+        "baseline_pct": 0.3254571680031293
+      }
+    },
+    {
+      "sample": "S2",
+      "index": 4,
+      "reference_sha": "6ea7048e92f8fa14720c8bd5ec603b4f4c789ecb0dc316de5613b6e7c8f96833",
+      "taped_sha": "a714af26be450e8faf4109f1c16ec46d1c83b18e90fc62d80f3086855b899249",
+      "reference_name": "S2_Squared_[4].tif",
+      "taped_name": "S2_Taped_[4].tif",
+      "rows": 9,
+      "cols": 9,
+      "grid": "grids/S2_4.png",
+      "eligible": "eligible/S2_4.png",
+      "expected": {
+        "peeled_pct": 0.768948767299056,
+        "retained_pct": 99.23105123270093,
+        "eligible_px": 327330,
+        "loss_px": 2517,
+        "strict_pct": 0.25692725995173066,
+        "baseline_pct": 0.22301652766321448
+      }
+    },
+    {
+      "sample": "S5",
+      "index": 1,
+      "reference_sha": "767688c0d09214e70ae22824f53c0398b0bf906411555f23e89374a0baba42e3",
+      "taped_sha": "dea27e660fd88160d545c67c48747a43321c8095fe0c860ce88cc1a4d7ecaa73",
+      "reference_name": "S5_Squared_[1].tif",
+      "taped_name": "S5_Taped_[1].tif",
+      "rows": 9,
+      "cols": 9,
+      "grid": "grids/S5_1.png",
+      "eligible": "eligible/S5_1.png",
+      "expected": {
+        "peeled_pct": 13.816390766800382,
+        "retained_pct": 86.18360923319962,
+        "eligible_px": 419053,
+        "loss_px": 57898,
+        "baseline_pct": 0.4691530665572135
+      }
+    },
+    {
+      "sample": "S5",
+      "index": 2,
+      "reference_sha": "c4f252eb4a4cc5db652b6c72eae517e335fa31967e86e535344404b59921096a",
+      "taped_sha": "6f4c87ffcf190d78e3b4fac9f4ab24402723d98cecdf57506b4a12664bad4048",
+      "reference_name": "S5_Squared_[2].tif",
+      "taped_name": "S5_Taped_[2].tif",
+      "rows": 9,
+      "cols": 9,
+      "grid": "grids/S5_2.png",
+      "eligible": "eligible/S5_2.png",
+      "expected": {
+        "peeled_pct": 13.959677765535794,
+        "retained_pct": 86.04032223446421,
+        "eligible_px": 419322,
+        "loss_px": 58536,
+        "baseline_pct": 0.4752910651003286
+      }
+    },
+    {
+      "sample": "S5",
+      "index": 3,
+      "reference_sha": "3c556134005ae3e5a463483f122fb3eb7fafec2fb34fd6ac30dacbe9f3f52223",
+      "taped_sha": "a9959a5fc3f177f2743dc8da849ff09af4cd4f16bee3fd57108249042c5b969c",
+      "reference_name": "S5_Squared_[3].tif",
+      "taped_name": "S5_Taped_[3].tif",
+      "rows": 9,
+      "cols": 9,
+      "grid": "grids/S5_3.png",
+      "eligible": "eligible/S5_3.png",
+      "expected": {
+        "peeled_pct": 14.093683075677232,
+        "retained_pct": 85.90631692432277,
+        "eligible_px": 409978,
+        "loss_px": 57781,
+        "baseline_pct": 0.5153935089199908
+      }
+    },
+    {
+      "sample": "S5",
+      "index": 4,
+      "reference_sha": "48e4cfac630f982819296594d8634d015cc3ec8fb2c17c2cc281daef1229a28f",
+      "taped_sha": "0d49e61e4f6b73778dea529347e97802c11d8b8f6e92995ba1fa05affa0bdef4",
+      "reference_name": "S5_Squared_[4].tif",
+      "taped_name": "S5_Taped_[4].tif",
+      "rows": 9,
+      "cols": 9,
+      "grid": "grids/S5_4.png",
+      "eligible": "eligible/S5_4.png",
+      "expected": {
+        "peeled_pct": 16.1021870509262,
+        "retained_pct": 83.8978129490738,
+        "eligible_px": 406392,
+        "loss_px": 65438,
+        "baseline_pct": 0.5541447666292643
+      }
+    },
+    {
+      "sample": "S6",
+      "index": 1,
+      "reference_sha": "808512e1a6b2a3805045adaa5e234e2dfd7684f0c4ce4641467692e79e990398",
+      "taped_sha": "2e2aa68f53f4a38e67eb7c709264423347abecbf257d2e667efd0928e62a44c9",
+      "reference_name": "S6_Squared_[1].tif",
+      "taped_name": "S6_Taped_[1].tif",
+      "rows": 9,
+      "cols": 9,
+      "grid": "grids/S6_1.png",
+      "eligible": "eligible/S6_1.png",
+      "expected": {
+        "peeled_pct": 3.527535928826705,
+        "retained_pct": 96.47246407117329,
+        "eligible_px": 420832,
+        "loss_px": 14845,
+        "strict_pct": 2.4926811649304237,
+        "loose_pct": 5.5561364154817126
+      }
+    },
+    {
+      "sample": "S6",
+      "index": 2,
+      "reference_sha": "dae98e2ad566e787b1c34b693693f7c905711dad02e48ecaab1822e472794cc6",
+      "taped_sha": "d8653f214073cb9e1e4af727c0428d41759824566fc1dee3b550dc5e915d7a9b",
+      "reference_name": "S6_Squared_[2].tif",
+      "taped_name": "S6_Taped_[2].tif",
+      "rows": 9,
+      "cols": 9,
+      "grid": "grids/S6_2.png",
+      "eligible": "eligible/S6_2.png",
+      "expected": {
+        "peeled_pct": 3.5654182948743545,
+        "retained_pct": 96.43458170512565,
+        "eligible_px": 420708,
+        "loss_px": 15000,
+        "strict_pct": 2.5497494699411467,
+        "loose_pct": 5.617435370851042
+      }
+    },
+    {
+      "sample": "S6",
+      "index": 3,
+      "reference_sha": "5cf258dfd86456b1cc72687efc858403bd4eb6cfc8bba61b52fca8f8a78c462d",
+      "taped_sha": "d55cc41ea2f8d492654c6ba10424d5cd1f8c869ff1dc83768478b4bc84047865",
+      "reference_name": "S6_Squared_[3].tif",
+      "taped_name": "S6_Taped_[3].tif",
+      "rows": 9,
+      "cols": 9,
+      "grid": "grids/S6_3.png",
+      "eligible": "eligible/S6_3.png",
+      "expected": {
+        "peeled_pct": 3.4058183325353553,
+        "retained_pct": 96.59418166746464,
+        "eligible_px": 419811,
+        "loss_px": 14298,
+        "strict_pct": 2.395125425489089,
+        "loose_pct": 5.518673879436222
+      }
+    },
+    {
+      "sample": "S6",
+      "index": 4,
+      "reference_sha": "9e37ea38aeb01110496856d57cdb94474f746c09002b5006ae7a5caaad19e47a",
+      "taped_sha": "96271a326fbbd59d8e85e4c1d3268b444598ad4e68222ce42a537730a5071024",
+      "reference_name": "S6_Squared_[4].tif",
+      "taped_name": "S6_Taped_[4].tif",
+      "rows": 9,
+      "cols": 9,
+      "grid": "grids/S6_4.png",
+      "eligible": "eligible/S6_4.png",
+      "expected": {
+        "peeled_pct": 3.3194164393310404,
+        "retained_pct": 96.68058356066896,
+        "eligible_px": 421550,
+        "loss_px": 13993,
+        "strict_pct": 2.3162139722452855,
+        "loose_pct": 5.433519155497568
+      }
+    }
+  ]
+}

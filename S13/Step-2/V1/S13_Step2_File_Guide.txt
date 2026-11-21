@@ -1,0 +1,30 @@
+S13 STEP-2 FILE GUIDE
+
+All_Annotations.png: green cuts, yellow/orange/red cell status, cell IDs
+0-80, and exact light-blue loss pixels in one native-size image.
+Green_Boundaries.png: boundary-only view.
+Yellow_Cells.png: transparent light-yellow cells with green boundaries.
+Numbered_0-80.png: green/yellow grid with separate cell numbers.
+Cell_Status.png: yellow intact, orange damaged, red excluded cells.
+AM_Loss_Blue.png: exact measured candidate loss areas, without numbers.
+Excluded_Areas.png: red excluded original-scrape/foil pixels; green cuts.
+Squared_Aligned_To_Taped.png: registered, exposure-corrected reference.
+Aligned_Red_Cyan_Overlay.png: overlapping Squared and Taped comparison.
+
+Summary.csv and Results.xlsx: per-image counts and area percentages.
+All_Per_Cell_Results.csv and the four per-image CSVs: full cell detail.
+Per_Cell_Means.csv: per-cell average across the repeated views.
+Threshold_Comparison.csv: high/moderate/conservative operational results.
+Grid_Counts.txt: the independently checked grid count table.
+Method_and_Results.txt: area definitions, processing, settings, limitations.
+
+Reusable_Data contains exact masks, transformed curved cell polygons,
+centroids, affine transformations, settings and source SHA-256 hashes.
+Cell_ID_Mask.tif uses values 1-81 for displayed IDs 0-80. Value 0 is outside.
+Binary masks use 255 for included/marked pixels and 0 elsewhere.
+Transparent_Blue_Loss_Overlay.png is an RGBA overlay with no background.
+
+All annotated per-image PNGs are lossless 1440 x 1080 pixels.
+The original uploaded TIFF files have not been modified.
+
+Analysis_Source contains the processing scripts for reproducibility.

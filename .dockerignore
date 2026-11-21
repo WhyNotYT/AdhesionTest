@@ -1,0 +1,15 @@
+# Build context excludes runtime data and local-only artifacts.  The app
+# recreates data/ on startup and the two demos are reconstructed from S13/S16.
+.git
+.gitignore
+.venv
+venv
+__pycache__
+**/__pycache__
+*.py[cod]
+*.pyo
+data
+tests
+*.zip
+*.log
+.DS_Store

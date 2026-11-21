@@ -1,0 +1,29 @@
+S18 - STEP 1: GRID CELL COUNTS
+
+Image	Columns (horizontal, left to right)	Rows (vertical, top to bottom)	Total cells	Number range
+S18_Squared_[1].tif	9	9	81	0-80
+S18_Squared_[2].tif	9	9	81	0-80
+S18_Squared_[3].tif	9	9	81	0-80
+S18_Squared_[4].tif	9	9	81	0-80
+
+COUNTING BASIS
+Each supplied photograph was inspected. The count is based on the visible scored grid in these four photographs; no count from an earlier sample was used.
+Ten vertical scored boundaries and ten horizontal scored boundaries enclose nine columns and nine rows, giving 81 cells in each photograph.
+The coating margins and cut extensions outside the enclosing scored boundaries are not additional closed grid cells.
+The four photographs show the same physical grid; 81 per photograph does not mean 324 distinct physical cells.
+
+NUMBERING
+Cell 0 is at the upper-left corner of the enclosed grid.
+Numbering proceeds from left to right within a row, then continues on the next row below.
+Rows are 0-8, 9-17, 18-26, 27-35, 36-44, 45-53, 54-62, 63-71, and 72-80.
+
+BOUNDARIES AND ORIENTATION
+Green lines follow the source-specific curved groove centre paths rather than a perfectly straight synthetic grid.
+Small gaps or ambiguous chipped sections are bridged continuously between visible adjacent groove sections.
+The source orientations were checked; no rotation, geometric warping, cropping, or resampling was needed for the full-size outputs.
+Full-size outputs retain 1440 x 1080 pixel coordinates.
+Light-yellow fill opacity is approximately 22%; the underlying material remains visible.
+
+DISPLAY NOTE
+The source files store grayscale intensities in 16-bit TIFF containers. PNG views use a linear grayscale display window (0.1st to 99.9th percentile) for visibility.
+Only the display copies are windowed; the source TIFF files are unchanged.

@@ -1,0 +1,65 @@
+[
+  {
+    "step": "align",
+    "key": "reference",
+    "label": "Squared",
+    "url": "/media/eea086df339b313283eb/stage-2ae00e12bede4896019b/reference.png",
+    "main": false
+  },
+  {
+    "step": "align",
+    "key": "tape",
+    "label": "Taped",
+    "url": "/media/eea086df339b313283eb/stage-2ae00e12bede4896019b/tape.png",
+    "main": false
+  },
+  {
+    "step": "align",
+    "key": "align",
+    "label": "Overlay",
+    "url": "/media/eea086df339b313283eb/stage-2ae00e12bede4896019b/align.png",
+    "main": true
+  },
+  {
+    "step": "grid",
+    "key": "grid",
+    "label": "Grid",
+    "url": "/media/eea086df339b313283eb/stage-2ae00e12bede4896019b/grid.png",
+    "main": true
+  },
+  {
+    "step": "grid",
+    "key": "excluded",
+    "label": "Excluded",
+    "url": "/media/eea086df339b313283eb/stage-2ae00e12bede4896019b/excluded.png",
+    "main": false
+  },
+  {
+    "step": "signals",
+    "key": "normalized",
+    "label": "Reference",
+    "url": "/media/eea086df339b313283eb/stage-2ae00e12bede4896019b/normalized.png",
+    "main": false
+  },
+  {
+    "step": "signals",
+    "key": "field",
+    "label": "Illumination",
+    "url": "/media/eea086df339b313283eb/stage-2ae00e12bede4896019b/field.png",
+    "main": false
+  },
+  {
+    "step": "signals",
+    "key": "delta",
+    "label": "Delta",
+    "url": "/media/eea086df339b313283eb/stage-2ae00e12bede4896019b/delta.png",
+    "main": true
+  },
+  {
+    "step": "signals",
+    "key": "brightness",
+    "label": "Brightness",
+    "url": "/media/eea086df339b313283eb/stage-2ae00e12bede4896019b/brightness.png",
+    "main": false
+  }
+]

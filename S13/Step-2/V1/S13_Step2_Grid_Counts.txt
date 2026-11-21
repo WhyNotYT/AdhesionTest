@@ -1,0 +1,16 @@
+S13 STEP-2: GRID COUNTS
+
+Counted from the visible Taped grid. Columns are horizontal, rows vertical.
+
+Image               Columns  Rows  Total  Numbering
+------------------------------------------------------
+S13_Taped_[1]        9        9     81     0-80
+S13_Taped_[2]        9        9     81     0-80
+S13_Taped_[3]        9        9     81     0-80
+S13_Taped_[4]        9        9     81     0-80
+
+The four images are repeated views of the same 81 physical cells.
+Numbering starts in the upper-left enclosed cell and proceeds left to right,
+then down to the next row. Cell ID = 9 * zero-based row + zero-based column.
+The unbounded coating outside the ten vertical and ten horizontal grid cuts
+is outside the measured grid. Faint cut segments are interpolated.

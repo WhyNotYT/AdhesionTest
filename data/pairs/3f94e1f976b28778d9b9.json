@@ -1,0 +1,43 @@
+{
+  "id": "3f94e1f976b28778d9b9",
+  "mode": "reference",
+  "reference": {
+    "name": "S6_Squared_[2].tif",
+    "path": "/run/media/whynotyt/8743e3e3-e8d0-4b37-8f07-149513154275/OtherWork/Juhani/data/uploads/dae98e2ad566e787b1c34b693693f7c905711dad02e48ecaab1822e472794cc6.tif",
+    "sha256": "dae98e2ad566e787b1c34b693693f7c905711dad02e48ecaab1822e472794cc6",
+    "width": 1440,
+    "height": 1080,
+    "meta": {
+      "path": "/run/media/whynotyt/8743e3e3-e8d0-4b37-8f07-149513154275/OtherWork/Juhani/data/uploads/dae98e2ad566e787b1c34b693693f7c905711dad02e48ecaab1822e472794cc6.tif",
+      "name": "dae98e2ad566e787b1c34b693693f7c905711dad02e48ecaab1822e472794cc6.tif",
+      "mode": "I;16",
+      "dtype": "uint16",
+      "shape": [
+        1080,
+        1440
+      ],
+      "scale": 1023.0,
+      "minimum": 0.007820136845111847,
+      "maximum": 0.9990224838256836,
+      "median": 0.17595307528972626,
+      "p99": 0.5816226601600647,
+      "original_name": "S6_Squared_[2].tif",
+      "converted": false
+    }
+  },
+  "taped": null,
+  "reference_spec": {
+    "sample": "S6",
+    "index": 2,
+    "reference_sha": "dae98e2ad566e787b1c34b693693f7c905711dad02e48ecaab1822e472794cc6",
+    "taped_sha": "d8653f214073cb9e1e4af727c0428d41759824566fc1dee3b550dc5e915d7a9b",
+    "reference_name": "S6_Squared_[2].tif",
+    "taped_name": "S6_Taped_[2].tif",
+    "ahmed": true,
+    "rows": 9,
+    "cols": 9,
+    "kind": "reference"
+  },
+  "label": "S6 2 \u00b7 squared-only",
+  "order": 103
+}

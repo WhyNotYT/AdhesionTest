@@ -1,0 +1,21 @@
+{
+  "control": "Unpeeled S18_Squared_[1] versus S18_Squared_[2] repeat views",
+  "registration_median_residual_px": 0.04965063820729363,
+  "results": {
+    "main": {
+      "detected_pixels": 0,
+      "assessed_pixels": 540761,
+      "apparent_loss_percent": 0.0
+    },
+    "strict": {
+      "detected_pixels": 0,
+      "assessed_pixels": 540761,
+      "apparent_loss_percent": 0.0
+    },
+    "relaxed": {
+      "detected_pixels": 0,
+      "assessed_pixels": 540761,
+      "apparent_loss_percent": 0.0
+    }
+  }
+}

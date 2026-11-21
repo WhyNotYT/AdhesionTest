@@ -1,0 +1,65 @@
+{
+  "id": "ebb8a258a6faacbd3ccf",
+  "mode": "paired",
+  "reference": {
+    "name": "S6_Squared_[4].tif",
+    "path": "/run/media/whynotyt/8743e3e3-e8d0-4b37-8f07-149513154275/OtherWork/Juhani/data/uploads/9e37ea38aeb01110496856d57cdb94474f746c09002b5006ae7a5caaad19e47a.tif",
+    "sha256": "9e37ea38aeb01110496856d57cdb94474f746c09002b5006ae7a5caaad19e47a",
+    "width": 1440,
+    "height": 1080,
+    "meta": {
+      "path": "/run/media/whynotyt/8743e3e3-e8d0-4b37-8f07-149513154275/OtherWork/Juhani/data/uploads/9e37ea38aeb01110496856d57cdb94474f746c09002b5006ae7a5caaad19e47a.tif",
+      "name": "9e37ea38aeb01110496856d57cdb94474f746c09002b5006ae7a5caaad19e47a.tif",
+      "mode": "I;16",
+      "dtype": "uint16",
+      "shape": [
+        1080,
+        1440
+      ],
+      "scale": 1023.0,
+      "minimum": 0.0039100684225559235,
+      "maximum": 0.9990224838256836,
+      "median": 0.07429130375385284,
+      "p99": 0.265884667634964,
+      "original_name": "S6_Squared_[4].tif",
+      "converted": false
+    }
+  },
+  "taped": {
+    "name": "S6_Taped_[4].tif",
+    "path": "/run/media/whynotyt/8743e3e3-e8d0-4b37-8f07-149513154275/OtherWork/Juhani/data/uploads/96271a326fbbd59d8e85e4c1d3268b444598ad4e68222ce42a537730a5071024.tif",
+    "sha256": "96271a326fbbd59d8e85e4c1d3268b444598ad4e68222ce42a537730a5071024",
+    "width": 1440,
+    "height": 1080,
+    "meta": {
+      "path": "/run/media/whynotyt/8743e3e3-e8d0-4b37-8f07-149513154275/OtherWork/Juhani/data/uploads/96271a326fbbd59d8e85e4c1d3268b444598ad4e68222ce42a537730a5071024.tif",
+      "name": "96271a326fbbd59d8e85e4c1d3268b444598ad4e68222ce42a537730a5071024.tif",
+      "mode": "I;16",
+      "dtype": "uint16",
+      "shape": [
+        1080,
+        1440
+      ],
+      "scale": 1023.0,
+      "minimum": 0.0039100684225559235,
+      "maximum": 0.9990224838256836,
+      "median": 0.07917888462543488,
+      "p99": 0.6226783990859985,
+      "original_name": "S6_Taped_[4].tif",
+      "converted": false
+    }
+  },
+  "reference_spec": {
+    "sample": "S6",
+    "index": 4,
+    "reference_sha": "9e37ea38aeb01110496856d57cdb94474f746c09002b5006ae7a5caaad19e47a",
+    "taped_sha": "96271a326fbbd59d8e85e4c1d3268b444598ad4e68222ce42a537730a5071024",
+    "reference_name": "S6_Squared_[4].tif",
+    "taped_name": "S6_Taped_[4].tif",
+    "ahmed": true,
+    "rows": 9,
+    "cols": 9
+  },
+  "label": "S6 4",
+  "order": 107
+}

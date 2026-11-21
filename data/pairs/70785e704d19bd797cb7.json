@@ -1,0 +1,32 @@
+{
+  "id": "70785e704d19bd797cb7",
+  "mode": "reference",
+  "reference": {
+    "name": "S6_Squared_[6].tif",
+    "path": "/run/media/whynotyt/8743e3e3-e8d0-4b37-8f07-149513154275/OtherWork/Juhani/data/uploads/d0cdbfba58223d012b4677c55b8fbf2fbc3762e2c6ea7ddc00b0b26e8ba681a9.tif",
+    "sha256": "d0cdbfba58223d012b4677c55b8fbf2fbc3762e2c6ea7ddc00b0b26e8ba681a9",
+    "width": 1440,
+    "height": 1080,
+    "meta": {
+      "path": "/run/media/whynotyt/8743e3e3-e8d0-4b37-8f07-149513154275/OtherWork/Juhani/data/uploads/d0cdbfba58223d012b4677c55b8fbf2fbc3762e2c6ea7ddc00b0b26e8ba681a9.tif",
+      "name": "d0cdbfba58223d012b4677c55b8fbf2fbc3762e2c6ea7ddc00b0b26e8ba681a9.tif",
+      "mode": "I;16",
+      "dtype": "uint16",
+      "shape": [
+        1080,
+        1440
+      ],
+      "scale": 1023.0,
+      "minimum": 0.006842619739472866,
+      "maximum": 0.9990224838256836,
+      "median": 0.17693059146404266,
+      "p99": 0.5063538551330566,
+      "original_name": "S6_Squared_[6].tif",
+      "converted": false
+    }
+  },
+  "taped": null,
+  "reference_spec": null,
+  "label": "S6 6 \u00b7 squared-only",
+  "order": 109
+}

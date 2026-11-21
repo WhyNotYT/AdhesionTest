@@ -1,0 +1,94 @@
+S13 STEP-2 ADHESION AREA ESTIMATE
+
+Primary result: HIGH SENSITIVITY optical classification.
+
+Image             Intact  Damaged  Excluded  Retained AM (%)  Peeled AM (%)
+S13_Taped_[1]          4       77         0          98.7295         1.2705
+S13_Taped_[2]          6       75         0          98.7282         1.2718
+S13_Taped_[3]          1       80         0          98.7003         1.2997
+S13_Taped_[4]          1       80         0          98.8124         1.1876
+
+Mean across the four views: retained AM 98.7426%; peeled AM 1.2574%.
+
+AREA DEFINITION
+Retained AM means eligible original coated area with no detected new loss.
+Eligible original AM excludes the original tool-scraped cut bands, a small
+registration safety margin, pre-existing bright foil candidates and the
+area outside the enclosed grid. These exclusions apply to numerator and
+denominator. No whole cells were excluded.
+Loss (%) = 100 * new loss pixels / eligible original AM pixels.
+Retained (%) = 100 - loss (%).
+A damaged cell has at least one retained connected loss component.
+An intact cell has no loss detected by this setting. This does not prove
+physical zero damage. Severity is expressed as area loss, without assigning
+an ASTM or other standardized test grade.
+
+REGISTRATION AND RAW SIGNAL
+Each Squared image was paired only with its matching Taped image. An affine
+transform fitted to stable texture/cut matches corrects translation, small
+rotation and scale. The native Taped orientation and dimensions are kept.
+Measurements use original 16-bit containers containing approximately
+10-bit signal. A 0.6-pixel Gaussian smoothing suppresses sensor noise.
+A robust second-order spatial fit to paired log-intensity ratios corrects
+exposure/illumination differences. It is fitted from cell interiors away
+from cuts. The fixed sqrt(raw/1023) display mapping is not used to measure
+loss. The aligned reference display has exposure correction applied.
+
+ORIGINAL SCRAPE EXCLUSION
+The Step-1 curved cut centerlines are retained. Connected dark or bright
+original groove pixels near the cut centerlines extend the exclusion
+locally. A two-pixel margin covers alignment uncertainty. Bright original
+interior foil candidates are excluded separately. The exact excluded-pixel
+masks are provided. New bright material-loss regions extending beyond the
+original excluded bands can be included. The safety margin can omit a
+small amount of loss immediately beside a pre-existing cut.
+
+HIGH-SENSITIVITY DETECTION
+A counted loss pixel must satisfy ALL of the following:
+1. It lies in the eligible original-AM region.
+2. Its local Taped intensity is at least 1.5 times the fitted local coating
+   background.
+3. Its paired log-intensity increase exceeds max(0.22, 2.0 * sigma), after
+   exposure correction. Sigma is estimated robustly from negative residuals
+   in stable cell interiors.
+4. It belongs to an eight-connected component of at least three pixels.
+Blue pixels exactly match the measured loss masks. They are not expanded
+or dilated for display.
+
+THRESHOLD COMPARISON
+These operational settings show threshold dependence. They are not a
+statistical confidence interval or proof of material identity.
+High: local brightness ratio 1.5; paired change 2.0 sigma (primary).
+Moderate: ratio 1.7; paired change 2.5 sigma.
+Conservative: ratio 2.0; paired change 3.0 sigma.
+
+Image             High loss (%)  Moderate loss (%)  Conservative loss (%)
+S13_Taped_[1]         1.2705             0.6752                 0.3970
+S13_Taped_[2]         1.2718             0.6900                 0.4004
+S13_Taped_[3]         1.2997             0.7068                 0.3997
+S13_Taped_[4]         1.1876             0.6311                 0.3846
+
+INTERPRETATION
+The blue regions are high-sensitivity optical candidates for new exposed
+substrate or reduced coating coverage. Fine bright texture can also change
+with illumination or surface roughness. Large bright changes next to cuts
+are clearer than tiny isolated clusters. The estimate describes visible
+area retention in this image field, not adhesion force, retained mass,
+coating thickness or a standardized classification.
+The four views repeat one specimen. They are not four independent samples.
+Their arithmetic mean summarizes repeated-view estimates. No precision
+beyond the image analysis and chosen thresholds is implied.
+
+COLOURS
+Green: grid boundaries.
+Light yellow: cell has no detected new AM loss.
+Orange: cell contains detected candidate loss.
+Red: excluded whole cell (none in this set).
+Light blue: exact candidate loss pixels used in the calculation.
+On the separate Excluded_Areas images, red marks excluded PIXELS only.
+
+ALIGNMENT CHECK
+Aligned_Red_Cyan_Overlay images place the normalized Squared image in the
+red channel and Taped image in the cyan channels. Aligned common features
+appear gray/white. Colour differences show changes or residual mismatch;
+they do not themselves constitute the measured loss mask.

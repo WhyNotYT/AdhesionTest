@@ -1,0 +1,57 @@
+S16 - STEP 1: GRID IDENTIFICATION AND CELL COUNTS
+================================================
+
+Image                    Columns (horizontal)   Rows (vertical)   Total cells   Numbering
+S16_Squared_[1].tif       9                      9                 81            0-80
+S16_Squared_[2].tif       9                      9                 81            0-80
+S16_Squared_[3].tif       9                      9                 81            0-80
+S16_Squared_[4].tif       9                      9                 81            0-80
+
+COUNTING BASIS
+Each source image was inspected independently. Ten visible, approximately
+vertical scribed boundaries and ten approximately horizontal scribed
+boundaries enclose 9 x 9 = 81 cells. Coating margins outside the outermost
+cuts and cut extensions beyond the enclosed grid are not counted as cells.
+The four images show the same physical grid under different illumination;
+the counts describe each image, not 324 separate physical cells.
+
+NUMBERING
+The first enclosed cell at the upper left is 0. Numbers increase left to
+right, then continue on the next row downward. Rows contain:
+0-8, 9-17, 18-26, 27-35, 36-44, 45-53, 54-62, 63-71, 72-80.
+
+OVERLAYS AND GEOMETRY
+Green boundaries follow the local bends in the scribed cuts. Individual
+boundaries are traced separately in all four images, rather than placing a
+straight rectangular grid over the sample. Brief obscured sections follow
+the adjacent visible cut course; their exact centreline is an estimate.
+All images retain their original 1440 x 1080 pixel size and orientation.
+No rotation, resampling or geometric registration was applied.
+Light-yellow fill: RGB (255, 246, 120), opacity 66/255 = 25.9%.
+The underlying surface remains visible. Green line width is 3 pixels.
+
+DISPLAY AND ORIGINAL DATA
+The sources are 16-bit grayscale TIFF files. PNG deliverables use a
+per-image display window (raw-value percentiles 0.1-99.5) and a gamma
+exponent of 0.8 so that the coating and cuts remain visible under the
+different lighting conditions. This affects only display brightness.
+Original TIFF files are not modified. Raw-to-display parameters and source
+SHA-256 values are recorded in Reusable_Grid_Data/S16_Step1_Grid_Definitions.json.
+Display PNGs are not suitable for quantitative intensity comparison.
+
+FILES
+For each image:
+  *_Green_Boundaries.png : green cut boundaries, no yellow fill or numbers.
+  *_Yellow_Cells.png     : transparent light-yellow cells with green boundaries.
+  *_Numbered_0-80.png    : the yellow/green view with individual cell numbers.
+
+Additional files:
+  S16_Step1_Numbered_Overview.jpg : four numbered views for quick inspection.
+  Reusable_Grid_Data/*_Transparent_Grid_Overlay.png : RGBA overlay at original size.
+  Reusable_Grid_Data/*_Cell_IDs_1-81.png : 16-bit pixel labels; 0 is outside,
+      1-81 correspond to displayed cells 0-80 respectively.
+  Reusable_Grid_Data/S16_Step1_Grid_Definitions.json : curved boundary coordinates,
+      individual cell polygons, cell centroids and source identity.
+
+Step 1 identifies cells only. No adhesion loss, retention, or severity
+is calculated from these pre-tape images.

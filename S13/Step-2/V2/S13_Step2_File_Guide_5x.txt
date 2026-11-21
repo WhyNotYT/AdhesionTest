@@ -1,0 +1,22 @@
+S13 UPDATED ANALYSIS AT 5.0x SENSITIVITY
+
+All_Annotations_5x: green boundaries, cell IDs 0-80, yellow/orange/red cell
+status and light-blue candidate loss pixels in one original-size image.
+AM_Loss_Blue_5x: exact candidate loss pixels.
+Additional_Loss_5x: only pixels newly admitted relative to the 1.0x mask.
+Cell_Status_5x: whole-cell classification at the updated setting.
+Comparison_1x_vs_5x: paired views of previous and updated loss overlays.
+Results_5x.xlsx: summary and 324 per-cell observations with formulas.
+CSV tables: summary, per-cell results, per-cell means, thresholds and comparison.
+Grid_Counts_5x.txt: the 9 by 9 grid count for each image.
+Method_and_Results_5x.txt: full threshold definition, results and limitations.
+Reusable_Data: exact loss, added-loss, original baseline, eligible-area and
+exclusion masks, original cell labels, geometry and analysis settings.
+
+Binary masks use 255 for selected pixels and 0 elsewhere.
+Cell label masks use 1-81 for displayed IDs 0-80. Label 0 means outside.
+Per-image annotations retain the original 1440 by 1080 dimensions/orientation.
+Blue pixels are not expanded for display. The original source TIFFs and
+the previous 1.0x deliverables have not been modified.
+
+Analysis_Source contains the update script, workbook builder and input data.

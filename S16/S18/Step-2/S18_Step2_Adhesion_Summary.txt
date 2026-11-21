@@ -1,0 +1,57 @@
+S18 STEP 2 - IMAGE-BASED ADHESION AREA ESTIMATE
+
+Image	Columns	Rows	Total cells	No detected loss cells	Damaged cells	Excluded cells	Intact AM (%)	Peeled AM estimate (%)	Bright foil-like subset (%)	Dark new-damage subset (%)	Strict threshold loss (%)	Relaxed threshold loss (%)
+S18_Taped_[1].tif	9	9	81	0	81	0	83.076	16.924	5.707	11.217	11.284	21.198
+S18_Taped_[2].tif	9	9	81	0	81	0	83.228	16.772	5.656	11.116	11.137	21.015
+S18_Taped_[3].tif	9	9	81	0	81	0	83.254	16.746	5.759	10.987	11.047	21.138
+S18_Taped_[4].tif	9	9	81	0	81	0	83.347	16.653	5.607	11.046	11.007	20.936
+
+Mean across the four paired views: retained AM 83.226%; estimated lost AM 16.774%.
+Mean bright foil-like changed area 5.682%; mean darker new-damage area 11.092%.
+Mean threshold-sensitivity span: 11.119% to 21.072% loss. This is not a statistical confidence interval.
+The four photographs are repeat views of the same physical grid, not four independent tested specimens.
+
+WHAT THE PERCENTAGES MEAN
+Assessed area = pixels inside the original cell grid after excluding original tool-scraped grooves and their pre-existing dark walls/chips, with a one-pixel registration margin.
+Estimated peeled area = newly changed coating pixels selected by the paired-image detector outside those excluded grooves.
+Peeled AM estimate (%) = selected blue-mask pixels / assessed area pixels x 100.
+Intact AM (%) = 100 - peeled AM estimate (%). This is an optical area-retention proxy, not a mass fraction or a mechanical adhesion-strength measurement.
+
+INTERPRETATION AND UNCERTAINTY
+The main high-sensitivity estimate includes two classes: new bright foil-like exposure and new strongly darker edge/pit damage relative to the aligned Squared reference.
+The dark class is treated as inferred coating loss in the main estimate. Shadows, altered surface relief, or reflectance can also produce dark changes, so actual exposed-foil area is not uniquely identifiable from these grayscale views.
+The bright-only subset is reported separately for comparison. It too is an optical classification, not chemical confirmation of aluminium.
+All counted pixels are shown in light blue in Loss_Blue and Combined_Overlay images. Bright and dark component masks are also provided separately.
+A damaged cell contains at least one accepted changed cluster. No detected loss would mean no accepted cluster, not proof of absolute zero damage below the image detection limit.
+Every cell contains detected changes at the selected thresholds; therefore all 81 cells are orange, with zero intact-class and zero excluded-class cells. Separate Yellow_Cells files show the complete requested light-yellow grid.
+
+COLOURS
+Green = curved cell boundaries. Light yellow = no detected damage. Orange = detected damage. Red = excluded whole cell, if any. Light blue = pixels included in the loss estimate.
+Excluded_Grooves_Overlay shows excluded existing scrape areas in red. This diagnostic red groove area does not mean the surrounding whole cells were excluded.
+
+ALIGNMENT AND ORIGINAL SCRAPE EXCLUSION
+Each Squared image was matched only with its equally numbered Taped counterpart.
+The source photographs have the same upright orientation. Small translations, scale changes, shear, and in-plane rotation were estimated from surviving surface texture using affine registration.
+Each transform used 72 accepted cell-interior patch correspondences. Median residuals are approximately 0.33-0.39 pixels; 95th-percentile residuals are approximately 0.85-0.91 pixels.
+Only the reference was resampled into the original Taped image coordinates. All individual output images remain 1440 x 1080 pixels.
+Groove exclusion starts with the traced reference groove centre within two pixels, then includes connected pre-existing dark groove walls within 16 pixels where the reference is less than 0.78 of local background. A one-pixel margin covers registration/interpolation uncertainty.
+New changes outside the pre-existing scrape mask can be counted even when adjacent to the old groove. Entire grid-edge strips were not blanket-excluded.
+
+HIGH-SENSITIVITY DETECTOR
+Raw 16-bit-container TIFF intensities were used for calculations. PNG contrast adjustment is for display only.
+For comparison, the aligned raw images were smoothed with a 0.9-pixel Gaussian to suppress isolated sensor noise.
+A robust spatial photometric fit from surviving cell interiors compensates for exposure and illumination gradients. Residual noise was estimated separately in each cell interior.
+Main threshold: changed-cluster seed exceeds +/-4 local residual-noise units, with observed/predicted intensity ratio above 1.40 (bright) or below 0.65 (dark).
+Clusters grow only through observed changed pixels exceeding +/-2.5 noise units and ratios above 1.18 or below 0.82. Accepted connected clusters contain at least 8 pixels.
+Strict comparison uses seed 5, grow 3.2, ratios 1.55/0.55, and a 12-pixel minimum. Relaxed comparison uses seed 3.5, grow 2.0, ratios 1.30/0.72, and a 6-pixel minimum.
+The strict mask is a subset and the relaxed mask a superset of the main mask. Percentages are recalculated from their selected pixels, not multiplied by a sensitivity factor.
+
+REPEAT-VIEW CONTROL
+An unpeeled repeat-view comparison (Squared [1] versus Squared [2]) yielded zero accepted changed pixels at all three settings. This checks repeat-view noise rejection; it does not rule out all illumination or shadow errors after peeling.
+
+DELIVERED FILES
+Per image: original display, green boundaries, yellow cells, numbering, cell status, light-blue loss, combined overlay, transparent combined layer, paired reference comparison, registration diagnostic, original-groove exclusion diagnostic, and binary/ID masks.
+The workbook and CSV files contain all 324 image-cell records and the four image summaries. Cell IDs are 0-80 in each view, not 324 different physical cells.
+Binary masks use 0 and 255. Cell_ID_Mask uses 0 outside the grid and values 1-81 for printed cell IDs 0-80.
+The geometry JSON files contain the registration transform, cell polygons, source hashes, registration evidence, and image totals.
+Original source TIFFs were not edited.

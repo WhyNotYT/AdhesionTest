@@ -1,0 +1,34 @@
+{
+  "id": "demo-s13",
+  "label": "S13 demo",
+  "reference": {
+    "name": "S13_demo_Squared_[1].tif",
+    "path": "/run/media/whynotyt/8743e3e3-e8d0-4b37-8f07-149513154275/OtherWork/AdhesionTest/data/demo/S13_demo_Squared_[1].tif",
+    "sha256": "918e8fe00e93f4f068e89fa4bcec652976f9f963c2d9e60aefc4f1569b462da3",
+    "demo": true
+  },
+  "taped": {
+    "name": "S13_demo_Taped_[1].tif",
+    "path": "/run/media/whynotyt/8743e3e3-e8d0-4b37-8f07-149513154275/OtherWork/AdhesionTest/data/demo/S13_demo_Taped_[1].tif",
+    "sha256": "d7dba809ef8f233949659a4017d2aa0b690e0201a33f5a3450097fb3fafcfd66",
+    "demo": true
+  },
+  "reference_spec": {
+    "sample": "S13",
+    "index": 1,
+    "demo": true
+  },
+  "expected": {
+    "sample": "S13",
+    "index": 1,
+    "label": "S13 1",
+    "demo": true,
+    "source": "S13 V2 5.0x",
+    "peeled_pct": 17.04760170282514,
+    "retained_pct": 82.95239829717485,
+    "baseline_peeled_pct": 1.270516994103854,
+    "strict_peeled_pct": null
+  },
+  "mode": "paired",
+  "order": 101
+}
